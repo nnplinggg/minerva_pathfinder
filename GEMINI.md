@@ -2,13 +2,21 @@
 
 ## Project Identity
 
-**Name**: [Your App Name]
-**Purpose**: [One sentence — what does this app do, and why does it matter to the people who use it?]
-**Audience**: [Who uses this? What do they already know, and what are they trying to do?]
-**Human context**: [What changes in how people think, learn, or act because this app exists?]
+**Name**: Minerva Pathfinder
+**Purpose**: An interactive web app to help admitted and freshman students explore Minerva's curriculum by interest area and connect with an alumni/student network.
+**Audience**: Admitted students looking for "fit" and freshman students navigating academic and career paths.
+**Human context**: Replaces "walls of text" with interest-based exploration, helping students and parents feel more connected to Minerva's programs and trajectories.
 
-**GitHub repo**: [username/repo-name]
-**Live URL**: [https://username.github.io/repo-name]
+**Positioning Statement**:
+For **admitted Minerva students deciding whether to commit**,
+who **struggle to understand how Minerva's curriculum and network connect to their goals**,
+Minerva Pathfinder is a **decision-support tool**
+that **maps their interests to specific concentrations and surfaces relevant alumni stories**.
+Unlike **browsing minerva.edu's marketing pages and the long text-form course catalog pdf**,
+our product **provides personalized, interactive exploration of academic and career paths**.
+
+**GitHub repo**: [nnplinggg/admissions1](https://github.com/nnplinggg/admissions1)
+**Live URL**: [https://nnplinggg.github.io/admissions1](https://nnplinggg.github.io/admissions1)
 
 ## Tech Stack
 

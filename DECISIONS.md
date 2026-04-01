@@ -17,7 +17,7 @@
 **Guardrails Alignment**:
 - **Privacy & IP**: [How does this decision protect student data and clarify ownership?]
 - **Disclosure**: [How will this choice be disclosed to users/stakeholders?]
-- **Responsibility**: [Who is the human responsible for this decision's impact?]
+- **Responsibility**: [Who is the human responsible for this decision's impact? The owner of this Project - me (Linh) is the main contributor and lead brainstorming + data structure]
 - **Bias & Trust**: [What measures mitigate bias in this specific choice?]
 - **Values**: [Which core Minerva value does this align with?]
 ```

@@ -2,70 +2,47 @@
 
 ## Current State
 
-> **Keep this block short and current.** Update it at the end of every session.
-> This is the first thing Gemini reads — make it worth reading.
-
-**Status**: NOT STARTED
-**Active milestone**: M1 — [Milestone name]
-**Last session**: [YYYY-MM-DD]
+**Status**: INITIALIZED
+**Active milestone**: M1 — Foundation & Discovery
+**Last session**: 2026-04-01
 
 **Next actions**:
-- [ ] [The first concrete thing to do next session]
-- [ ] [The second thing]
-- [ ] [The third thing, if known]
-
-**Open questions**:
-- [Any unresolved technical or design decisions]
-- [Any user-facing questions that need answering before proceeding]
+- [ ] Push initial commit to GitHub and enable Pages (M0)
+- [ ] Define feature specifications (M2)
+- [ ] Create initial JSON data files (M2)
 
 ---
 
 ## Milestones
 
-> Each milestone should represent a user-visible capability, not a technical task.
-> Write the acceptance criteria as things a real user could verify, not things only a developer would notice.
-
 ### M0 — Project Initialization
 
-- [ ] Clone template repository
-- [ ] Fill in GEMINI.md project identity section
-- [ ] **Define AI Guardrails**: In `DECISIONS.md`, document how this project handles data privacy and human accountability.
-- [ ] Define milestones M1–M3 below
+- [x] Clone template repository
+- [x] Fill in GEMINI.md project identity section
+- [x] **Define AI Guardrails**: In `DECISIONS.md`, document how this project handles data privacy and human accountability.
+- [x] Define milestones M1–M3 below
 - [ ] Push initial commit to GitHub
 - [ ] Enable GitHub Pages in repository settings
 - [ ] Confirm live URL is accessible
 
-### M1 — [First Milestone Name]
+### M1 — Foundation & Discovery
 
-*[One sentence: what can a user do or experience once this milestone is complete?]*
-
-**Values checklist**:
-- [ ] **Learning**: Deepens understanding & invites participation
-- [ ] **Agency**: Supports human control, not AI dependence
-- [ ] **Privacy**: Zero-trust for sensitive data (PII, student records)
-- [ ] **Transparency**: AI use disclosed & human-reviewed
-
-**Acceptance criteria**:
-- [ ] [Criterion 1 — observable by a user]
-- [ ] [Criterion 2]
-- [ ] [Criterion 3]
-
-### M2 — [Second Milestone Name]
-
-*[Description]*
+*Gathering the necessary data and framing the problem to ensure the Pathfinder meets student needs.*
 
 **Values checklist**:
-- [ ] Learning
-- [ ] Agency
-- [ ] Privacy
-- [ ] Transparency
+- [x] **Learning**: Deepens understanding & invites participation
+- [x] **Agency**: Supports human control, not AI dependence
+- [x] **Privacy**: Zero-trust for sensitive data (PII, student records)
+- [x] **Transparency**: AI use disclosed & human-reviewed
 
 **Acceptance criteria**:
-- [ ] [Criterion]
+- [x] Data collection requirements documented
+- [x] Problem framing completed
+- [x] Initial project artifacts (PM docs) drafted
 
-### M3 — [Third Milestone Name]
+### M2 — Blueprint & Data Structure
 
-*[Description]*
+*Defining specific features and the static data model that will power the exploration and matching.*
 
 **Values checklist**:
 - [ ] Learning
@@ -74,7 +51,24 @@
 - [ ] Transparency
 
 **Acceptance criteria**:
-- [ ] [Criterion]
+- [ ] Feature specifications finalized
+- [ ] Data model (JSON structures) defined for courses and network
+- [ ] Initial static data files created
+
+### M3 — Interface & Interaction
+
+*Building the interactive frontend where users can explore curriculum and connect with the network.*
+
+**Values checklist**:
+- [ ] Learning
+- [ ] Agency
+- [ ] Privacy
+- [ ] Transparency
+
+**Acceptance criteria**:
+- [ ] Searchable course curriculum by interest area
+- [ ] Volunteer matching interface (simulated backend via static data)
+- [ ] Mobile-first responsive UI
 
 <!-- Add milestones as the project grows. Keep acceptance criteria user-observable. -->
 
@@ -82,9 +76,15 @@
 
 ## Session Log
 
-> Append a brief entry after each session. Never edit past entries.
-> Format: what state you found, what you did, what state you left it in.
-> **Disclosure**: Use the [Minerva Disclosure Template](#disclosure-template) below for significant AI-assisted work.
+---
+
+### 2026-04-01: Project Initialization and M1 Completion
+
+**AI Tool(s) Used**: Gemini 2.0 Flash
+**Purpose**: Project setup, milestone planning, drafting PM artifacts, and defining AI guardrails.
+**Modifications & Verification**: Translated student goals into structured milestones and project identity. Created three PM artifacts (`problem-framing-canvas.md`, `problem-statement.md`, `data-requirements.md`) and updated `DECISIONS.md`. Verified alignment with Minerva's Student and Staff AI Guardrails.
+**Learning Reflection**: Using structured PM frameworks (from the cloned repository) helped clarify the value proposition of the "Minerva Pathfinder" and established a clear path for data collection.
+**Session Link/Context**: Initial project setup and M1 foundation.
 
 ---
 
