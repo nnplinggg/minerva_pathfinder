@@ -99,6 +99,41 @@ function renderMap() {
 }
 
 // ============================================================
+// Adventure screen
+// ============================================================
+
+async function startAdventure(schoolId) {
+  state.activeSchool = schoolId;
+  state.adventureNodes = await getAdventure(schoolId);
+  renderAdventureNode(state.adventureNodes[0].id);
+}
+
+function renderAdventureNode(nodeId) {
+  const node = state.adventureNodes.find(n => n.id === nodeId);
+  if (!node) return;
+  state.currentNodeId = nodeId;
+  showScreen('adventure');
+
+  document.getElementById('story-text').textContent = node.text;
+
+  const choicesEl = document.getElementById('choices');
+  choicesEl.innerHTML = '';
+
+  if (node.unlocks) {
+    setTimeout(() => unlockSchool(node.unlocks), 1200);
+    return;
+  }
+
+  node.choices.forEach(choice => {
+    const btn = document.createElement('button');
+    btn.className = 'choice-btn';
+    btn.textContent = choice.label;
+    btn.onclick = () => renderAdventureNode(choice.next);
+    choicesEl.appendChild(btn);
+  });
+}
+
+// ============================================================
 // Init
 // ============================================================
 
