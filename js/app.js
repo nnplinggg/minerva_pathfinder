@@ -40,6 +40,7 @@ const state = {
   activeSchool: null,
   adventureNodes: [],
   currentNodeId: null,
+  accumulatedTags: [],
 };
 
 // ============================================================
@@ -104,6 +105,7 @@ function renderMap() {
 
 async function startAdventure(schoolId) {
   state.activeSchool = schoolId;
+  state.accumulatedTags = [];
   try {
     state.adventureNodes = await getAdventure(schoolId);
   } catch (err) {
@@ -129,7 +131,8 @@ function renderAdventureNode(nodeId) {
   choicesEl.innerHTML = '';
 
   if (node.unlocks) {
-    setTimeout(() => unlockSchool(node.unlocks), 1200);
+    const allTags = [...state.accumulatedTags, ...(node.requiredTags || [])];
+    setTimeout(() => unlockSchool(node.unlocks, allTags), 1200);
     return;
   }
 
@@ -137,7 +140,10 @@ function renderAdventureNode(nodeId) {
     const btn = document.createElement('button');
     btn.className = 'choice-btn';
     btn.textContent = choice.label;
-    btn.onclick = () => renderAdventureNode(choice.next);
+    btn.onclick = () => {
+      state.accumulatedTags.push(...(choice.tags || []));
+      renderAdventureNode(choice.next);
+    };
     choicesEl.appendChild(btn);
   });
 }
@@ -146,20 +152,20 @@ function renderAdventureNode(nodeId) {
 // School card screen
 // ============================================================
 
-async function unlockSchool(schoolId) {
+async function unlockSchool(schoolId, allTags = []) {
   if (!state.discovered.includes(schoolId)) {
     state.discovered.push(schoolId);
     saveDiscovered(state.discovered);
   }
-  await renderSchoolCard(schoolId);
+  await renderSchoolCard(schoolId, allTags);
 }
 
-async function renderSchoolCard(schoolId) {
+async function renderSchoolCard(schoolId, accumulatedTags = []) {
   showScreen('school-card');
   document.getElementById('card-name').textContent = SCHOOLS[schoolId].name;
   document.getElementById('card-desc').textContent = SCHOOL_DESCS[schoolId];
 
-  const courses = await getCourses(schoolId);
+  const courses = await getMatchedCourses(schoolId, accumulatedTags);
   const listEl = document.getElementById('course-list');
   listEl.innerHTML = '';
   courses.forEach(course => {
