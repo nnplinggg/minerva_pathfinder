@@ -131,3 +131,259 @@ footer {
     font-size: 0.7rem;
     text-transform: uppercase;
 }
+
+/* ============================================================
+   GAME UI — Minerva Pathfinder
+   ============================================================ */
+
+/* School accent colors */
+:root {
+  --school-ah:  #b05ec4;
+  --school-ss:  #2e86c1;
+  --school-cs:  #1a9e6e;
+  --school-ns:  #27ae60;
+  --school-biz: #e67e22;
+  --pixel-font: 'Press Start 2P', monospace;
+}
+
+/* Screen system */
+.screen { display: none; min-height: 100vh; }
+.screen.active { display: flex; flex-direction: column; align-items: center; justify-content: center; }
+.screen-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 2rem 1rem;
+  max-width: 600px;
+  width: 100%;
+}
+
+/* Pixel typography */
+.pixel-title {
+  font-family: var(--pixel-font);
+  font-size: 1.4rem;
+  line-height: 1.6;
+  text-align: center;
+  color: var(--mu-obsidian);
+}
+.pixel-title--sm { font-size: 0.85rem; }
+.pixel-sub {
+  font-family: var(--pixel-font);
+  font-size: 0.55rem;
+  text-align: center;
+  color: var(--mu-slate);
+  line-height: 1.8;
+}
+
+/* Pixel buttons */
+.btn-pixel {
+  font-family: var(--pixel-font);
+  font-size: 0.6rem;
+  background: var(--mu-obsidian);
+  color: var(--mu-bone);
+  border: none;
+  padding: 1rem 1.5rem;
+  cursor: pointer;
+  image-rendering: pixelated;
+  box-shadow: 4px 4px 0 var(--mu-clay);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.btn-pixel:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--mu-clay); }
+.btn-pixel:active { transform: translate(4px, 4px); box-shadow: none; }
+.btn-pixel--secondary {
+  background: var(--mu-bone);
+  color: var(--mu-obsidian);
+  box-shadow: 4px 4px 0 var(--mu-charcoal);
+}
+
+/* Mascot — CSS pixel art "Mi" */
+.mascot {
+  width: 16px;
+  height: 16px;
+  image-rendering: pixelated;
+  transform: scale(6);
+  margin: 2rem 0;
+  background: var(--mu-goldenrod);
+  border-radius: 2px;
+  box-shadow:
+    0px -16px 0 var(--mu-goldenrod),
+    16px -16px 0 var(--mu-goldenrod),
+    -16px -16px 0 var(--mu-goldenrod),
+    -4px -12px 0 var(--mu-obsidian),
+    4px -12px 0 var(--mu-obsidian),
+    -4px -8px 0 var(--mu-obsidian),
+    0px -6px 0 var(--mu-obsidian),
+    4px -8px 0 var(--mu-obsidian),
+    0px 0px 0 var(--mu-clay),
+    -8px 8px 0 var(--mu-clay),
+    8px 8px 0 var(--mu-clay),
+    -8px 16px 0 var(--mu-charcoal),
+    8px 16px 0 var(--mu-charcoal);
+}
+
+/* Mascot animations */
+@keyframes idle-bounce {
+  0%, 100% { transform: scale(6) translateY(0); }
+  50% { transform: scale(6) translateY(-3px); }
+}
+@keyframes celebrate {
+  0%, 100% { transform: scale(6) rotate(0deg); }
+  25% { transform: scale(6) rotate(-8deg); }
+  75% { transform: scale(6) rotate(8deg); }
+}
+.mascot--idle { animation: idle-bounce 1.2s ease-in-out infinite; }
+.mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
+
+/* World map school grid */
+.school-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  width: 100%;
+}
+@media (max-width: 480px) {
+  .school-grid { grid-template-columns: 1fr; }
+}
+.zone-tile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 1.2rem 0.8rem;
+  background: var(--mu-white);
+  border: 3px solid var(--mu-obsidian);
+  cursor: pointer;
+  box-shadow: 4px 4px 0 var(--mu-charcoal);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.zone-tile:hover { transform: translate(2px, 2px); box-shadow: 2px 2px 0 var(--mu-charcoal); }
+.zone-tile.discovered { border-color: var(--mu-goldenrod); background: #fffbe6; }
+.zone-icon { font-size: 2rem; }
+.zone-name {
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  text-align: center;
+  line-height: 1.8;
+  color: var(--mu-charcoal);
+}
+.zone-lock { font-size: 1rem; }
+
+/* Adventure screen */
+.adventure-inner { justify-content: flex-start; padding-top: 3rem; }
+.story-box {
+  background: var(--mu-white);
+  border: 3px solid var(--mu-obsidian);
+  padding: 1.5rem;
+  width: 100%;
+  box-shadow: 4px 4px 0 var(--mu-charcoal);
+}
+.story-text {
+  font-family: var(--pixel-font);
+  font-size: 0.55rem;
+  line-height: 2;
+  color: var(--mu-obsidian);
+  margin: 0;
+}
+.choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  width: 100%;
+}
+.choice-btn {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  background: var(--mu-bone);
+  color: var(--mu-obsidian);
+  border: 2px solid var(--mu-obsidian);
+  padding: 0.9rem 1rem;
+  cursor: pointer;
+  text-align: left;
+  line-height: 1.8;
+  box-shadow: 3px 3px 0 var(--mu-charcoal);
+  transition: transform 0.1s, box-shadow 0.1s;
+}
+.choice-btn:hover { transform: translate(2px, 2px); box-shadow: 1px 1px 0 var(--mu-charcoal); background: var(--mu-goldenrod); }
+
+/* School card screen */
+.school-card {
+  width: 100%;
+  border: 3px solid var(--mu-obsidian);
+  box-shadow: 6px 6px 0 var(--mu-charcoal);
+}
+.school-card__name {
+  font-family: var(--pixel-font);
+  font-size: 0.7rem;
+  color: var(--mu-clay);
+  margin-bottom: 1rem;
+}
+.school-card__desc {
+  font-size: 0.95rem;
+  color: var(--mu-charcoal);
+  margin-bottom: 1.25rem;
+}
+.school-card__courses-title {
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-bottom: 0.75rem;
+  color: var(--mu-slate);
+}
+.course-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; }
+.course-item { border-left: 3px solid var(--mu-goldenrod); padding-left: 0.75rem; }
+.course-item__title {
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  color: var(--mu-obsidian);
+  margin-bottom: 0.3rem;
+}
+.course-item__desc { font-size: 0.85rem; color: var(--mu-slate); margin: 0; }
+
+/* Summary screen */
+.badge-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+.school-badge {
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  background: var(--mu-goldenrod);
+  color: var(--mu-obsidian);
+  padding: 0.5rem 0.75rem;
+  border: 2px solid var(--mu-obsidian);
+  box-shadow: 2px 2px 0 var(--mu-charcoal);
+}
+.summary-blurb {
+  width: 100%;
+  border: 3px solid var(--mu-goldenrod);
+  box-shadow: 4px 4px 0 var(--mu-clay);
+  text-align: center;
+}
+.summary-blurb p {
+  font-family: var(--pixel-font);
+  font-size: 0.5rem;
+  line-height: 2;
+  color: var(--mu-charcoal);
+  margin: 0;
+}
+.screenshot-cue {
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  color: var(--mu-slate);
+  text-align: center;
+  animation: idle-bounce 2s ease-in-out infinite;
+}
+
+/* Footer override */
+footer { margin-top: 0; }
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
