@@ -173,6 +173,27 @@ async function renderSchoolCard(schoolId) {
 }
 
 // ============================================================
+// Summary screen
+// ============================================================
+
+function renderSummary() {
+  showScreen('summary');
+
+  const badgeRow = document.getElementById('badge-row');
+  badgeRow.innerHTML = '';
+  state.discovered.forEach(id => {
+    const badge = document.createElement('div');
+    badge.className = 'school-badge';
+    badge.textContent = `${SCHOOLS[id].icon} ${SCHOOLS[id].name}`;
+    badgeRow.appendChild(badge);
+  });
+
+  const firstSchool = state.discovered[0];
+  const blurbEl = document.getElementById('summary-blurb');
+  blurbEl.innerHTML = `<p>${SUMMARY_BLURBS[firstSchool]}</p>`;
+}
+
+// ============================================================
 // Init
 // ============================================================
 
