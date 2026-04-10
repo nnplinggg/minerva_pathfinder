@@ -45,30 +45,30 @@
 *Defining specific features and the static data model that will power the exploration and matching.*
 
 **Values checklist**:
-- [ ] Learning
-- [ ] Agency
-- [ ] Privacy
-- [ ] Transparency
+- [x] Learning
+- [x] Agency
+- [x] Privacy
+- [x] Transparency
 
 **Acceptance criteria**:
-- [ ] Feature specifications finalized
-- [ ] Data model (JSON structures) defined for courses and network
-- [ ] Initial static data files created
+- [x] Feature specifications finalized
+- [x] Data model (JSON structures) defined for courses
+- [x] Initial static data files created
 
 ### M3 — Interface & Interaction
 
 *Building the interactive frontend where users can explore curriculum and connect with the network.*
 
 **Values checklist**:
-- [ ] Learning
-- [ ] Agency
-- [ ] Privacy
-- [ ] Transparency
+- [x] Learning
+- [x] Agency
+- [x] Privacy
+- [x] Transparency
 
 **Acceptance criteria**:
-- [ ] Searchable course curriculum by interest area
-- [ ] Volunteer matching interface (simulated backend via static data)
-- [ ] Mobile-first responsive UI
+- [x] Searchable course curriculum by interest area
+- [x] Adventure-based school discovery (gamified, pixel mascot Mi)
+- [x] Mobile-first responsive UI
 
 <!-- Add milestones as the project grows. Keep acceptance criteria user-observable. -->
 
@@ -85,6 +85,16 @@
 **Modifications & Verification**: Translated student goals into structured milestones and project identity. Created three PM artifacts (`problem-framing-canvas.md`, `problem-statement.md`, `data-requirements.md`) and updated `DECISIONS.md`. Verified alignment with Minerva's Student and Staff AI Guardrails.
 **Learning Reflection**: Using structured PM frameworks (from the cloned repository) helped clarify the value proposition of the "Minerva Pathfinder" and established a clear path for data collection.
 **Session Link/Context**: Initial project setup and M1 foundation.
+
+---
+
+### 2026-04-10: M2 + M3 Implementation
+
+**AI Tool(s) Used**: Claude Code (claude-sonnet-4-6)
+**Purpose**: Full implementation of gamified school explorer — pixel mascot Mi, 5 CYOA adventures, courses display, world map, summary card.
+**Modifications & Verification**: Built 6 files from spec (data/adventures.json, data/courses.json, js/data.js, index.html, css/styles.css, js/app.js). Spec and code quality reviewed by automated subagents after each task.
+**Learning Reflection**: Designing a state machine in vanilla JS without a framework required explicit screen management — each screen is a distinct render function. The IIFE pattern in data.js shows how to create private scope without ES modules.
+**Session Link/Context**: Gamification design spec at docs/superpowers/specs/2026-04-10-gamification-design.md
 
 ---
 
