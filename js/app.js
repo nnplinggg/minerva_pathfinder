@@ -134,6 +134,45 @@ function renderAdventureNode(nodeId) {
 }
 
 // ============================================================
+// School card screen
+// ============================================================
+
+async function unlockSchool(schoolId) {
+  if (!state.discovered.includes(schoolId)) {
+    state.discovered.push(schoolId);
+    saveDiscovered(state.discovered);
+  }
+  await renderSchoolCard(schoolId);
+}
+
+async function renderSchoolCard(schoolId) {
+  showScreen('school-card');
+  document.getElementById('card-name').textContent = SCHOOLS[schoolId].name;
+  document.getElementById('card-desc').textContent = SCHOOL_DESCS[schoolId];
+
+  const courses = await getCourses(schoolId);
+  const listEl = document.getElementById('course-list');
+  listEl.innerHTML = '';
+  courses.forEach(course => {
+    const li = document.createElement('li');
+    li.className = 'course-item';
+    li.innerHTML = `
+      <div class="course-item__title">${course.title}</div>
+      <p class="course-item__desc">${course.description}</p>
+    `;
+    listEl.appendChild(li);
+  });
+
+  document.getElementById('btn-return-map').onclick = () => {
+    if (state.discovered.length === 5) {
+      renderSummary();
+    } else {
+      renderMap();
+    }
+  };
+}
+
+// ============================================================
 // Init
 // ============================================================
 
