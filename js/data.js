@@ -22,4 +22,13 @@
     const all = await _load('courses');
     return all.filter(course => course.school === schoolId);
   };
+
+  window.getMatchedCourses = async function (schoolId, accumulatedTags) {
+    const all = await _load('courses');
+    const schoolCourses = all.filter(c => c.school === schoolId);
+    const matched = schoolCourses.filter(c =>
+      (c.tags || []).filter(t => accumulatedTags.includes(t)).length >= 2
+    );
+    return matched.length >= 3 ? matched : schoolCourses;
+  };
 })();
