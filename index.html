@@ -1,40 +1,107 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>[Your App Name] — Minerva University</title>
-    <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minerva Pathfinder</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    <header>
-        <div class="container">
-            <h1>[Your App Name]</h1>
-            <p class="subtitle">[One-sentence purpose]</p>
-        </div>
-    </header>
 
-    <main class="container">
-        <!-- Students will build their app here -->
-        <section id="app-placeholder">
-            <h2>Ready to start?</h2>
-            <p>Tell Gemini what your first milestone is, or ask: "What should we build first for [App Name]?"</p>
-        </section>
-    </main>
+  <!-- SCREEN: Welcome -->
+  <div id="screen-welcome" class="screen active">
+    <div class="screen-inner">
+      <div class="mascot" id="mascot"></div>
+      <h1 class="pixel-title">Minerva<br>Pathfinder</h1>
+      <p class="pixel-sub">Meet Mi — your guide to Minerva's 5 schools.</p>
+      <button class="btn-pixel" id="btn-start">Start Adventure</button>
+    </div>
+  </div>
 
-    <footer>
-        <div class="container footer-content">
-            <div class="copyright">
-                &copy; 2026 Minerva University Student Project
-            </div>
-            <!-- MANDATORY AI DISCLOSURE (per Minerva Guardrails) -->
-            <div class="ai-disclosure">
-                <span class="badge">AI-Assisted</span>
-                Developed with Gemini CLI & Minerva AI Framework
-            </div>
-        </div>
-    </footer>
+  <!-- SCREEN: World Map -->
+  <div id="screen-map" class="screen">
+    <div class="screen-inner">
+      <div class="mascot mascot--idle" id="mascot-map"></div>
+      <h2 class="pixel-title pixel-title--sm">Choose a School</h2>
+      <div class="school-grid" id="school-grid">
+        <button class="zone-tile" data-school="arts-humanities">
+          <span class="zone-icon">🎨</span>
+          <span class="zone-name">Arts &amp; Humanities</span>
+          <span class="zone-lock" id="lock-arts-humanities">🔒</span>
+        </button>
+        <button class="zone-tile" data-school="social-sciences">
+          <span class="zone-icon">🌍</span>
+          <span class="zone-name">Social Sciences</span>
+          <span class="zone-lock" id="lock-social-sciences">🔒</span>
+        </button>
+        <button class="zone-tile" data-school="computational-sciences">
+          <span class="zone-icon">⚡</span>
+          <span class="zone-name">Computational Sciences</span>
+          <span class="zone-lock" id="lock-computational-sciences">🔒</span>
+        </button>
+        <button class="zone-tile" data-school="natural-sciences">
+          <span class="zone-icon">🌿</span>
+          <span class="zone-name">Natural Sciences</span>
+          <span class="zone-lock" id="lock-natural-sciences">🔒</span>
+        </button>
+        <button class="zone-tile" data-school="business">
+          <span class="zone-icon">📈</span>
+          <span class="zone-name">Business</span>
+          <span class="zone-lock" id="lock-business">🔒</span>
+        </button>
+      </div>
+    </div>
+  </div>
 
-    <script src="js/app.js"></script>
+  <!-- SCREEN: Adventure -->
+  <div id="screen-adventure" class="screen">
+    <div class="screen-inner adventure-inner">
+      <div class="mascot" id="mascot-adventure"></div>
+      <div class="story-box">
+        <p class="story-text" id="story-text"></p>
+      </div>
+      <div class="choices" id="choices"></div>
+    </div>
+  </div>
+
+  <!-- SCREEN: School Card -->
+  <div id="screen-school-card" class="screen">
+    <div class="screen-inner">
+      <div class="mascot mascot--celebrate" id="mascot-card"></div>
+      <div class="school-card card">
+        <h2 class="school-card__name" id="card-name"></h2>
+        <p class="school-card__desc" id="card-desc"></p>
+        <h3 class="school-card__courses-title">Courses you might take:</h3>
+        <ul class="course-list" id="course-list"></ul>
+      </div>
+      <button class="btn-pixel btn-pixel--secondary" id="btn-return-map">Back to Map</button>
+    </div>
+  </div>
+
+  <!-- SCREEN: Summary -->
+  <div id="screen-summary" class="screen">
+    <div class="screen-inner">
+      <div class="mascot mascot--celebrate"></div>
+      <h1 class="pixel-title pixel-title--sm">You discovered<br>all of Minerva!</h1>
+      <div class="badge-row" id="badge-row"></div>
+      <div class="summary-blurb card" id="summary-blurb"></div>
+      <p class="screenshot-cue">📸 Screenshot this to share your path!</p>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container footer-content">
+      <div class="copyright">&copy; 2026 Minerva University Student Project</div>
+      <div class="ai-disclosure">
+        <span class="badge">AI-Assisted</span>
+        Developed with Claude Code &amp; Minerva AI Framework
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
 </body>
 </html>
