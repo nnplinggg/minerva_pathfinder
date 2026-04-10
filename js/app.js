@@ -77,6 +77,28 @@ function renderWelcome() {
 }
 
 // ============================================================
+// World map screen
+// ============================================================
+
+function renderMap() {
+  showScreen('map');
+  Object.keys(SCHOOLS).forEach(id => {
+    const lockEl = document.getElementById(`lock-${id}`);
+    const tileEl = document.querySelector(`.zone-tile[data-school="${id}"]`);
+    if (state.discovered.includes(id)) {
+      lockEl.textContent = '✅';
+      tileEl.classList.add('discovered');
+    } else {
+      lockEl.textContent = '🔒';
+      tileEl.classList.remove('discovered');
+    }
+  });
+  document.querySelectorAll('.zone-tile').forEach(tile => {
+    tile.onclick = () => startAdventure(tile.dataset.school);
+  });
+}
+
+// ============================================================
 // Init
 // ============================================================
 
