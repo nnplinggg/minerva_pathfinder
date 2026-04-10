@@ -1,0 +1,167 @@
+[
+  {
+    "id": "ah-start",
+    "school": "arts-humanities",
+    "text": "Mi arrives at a colorful gallery wall covered in ancient symbols, poetry, and art from dozens of cultures. What do you explore first?",
+    "choices": [
+      { "label": "Decode the ancient symbols", "next": "ah-2a" },
+      { "label": "Write a poem about what you see", "next": "ah-2b" }
+    ]
+  },
+  {
+    "id": "ah-2a",
+    "school": "arts-humanities",
+    "text": "The symbols form a philosophical argument about how humans perceive beauty. How do you respond?",
+    "choices": [
+      { "label": "Challenge it with your own theory", "next": "ah-end" },
+      { "label": "Sketch it as a visual argument", "next": "ah-end" }
+    ]
+  },
+  {
+    "id": "ah-2b",
+    "school": "arts-humanities",
+    "text": "Your poem sparks a debate about storytelling across cultures. What do you do?",
+    "choices": [
+      { "label": "Compare narratives from different traditions", "next": "ah-end" },
+      { "label": "Explore how music shapes emotion", "next": "ah-end" }
+    ]
+  },
+  {
+    "id": "ah-end",
+    "school": "arts-humanities",
+    "text": "Mi cheers! You've uncovered the heart of Arts & Humanities — a school where ideas, creativity, and culture collide.",
+    "unlocks": "arts-humanities"
+  },
+  {
+    "id": "ss-start",
+    "school": "social-sciences",
+    "text": "Mi lands in a bustling city square where people are loudly debating a new policy. What do you do?",
+    "choices": [
+      { "label": "Survey the crowd about their opinions", "next": "ss-2a" },
+      { "label": "Study the historical patterns behind the debate", "next": "ss-2b" }
+    ]
+  },
+  {
+    "id": "ss-2a",
+    "school": "social-sciences",
+    "text": "The survey data reveals surprising divides along economic lines. How do you dig deeper?",
+    "choices": [
+      { "label": "Build a model to predict future trends", "next": "ss-end" },
+      { "label": "Interview community leaders for context", "next": "ss-end" }
+    ]
+  },
+  {
+    "id": "ss-2b",
+    "school": "social-sciences",
+    "text": "History shows this argument has repeated for centuries. What's your next move?",
+    "choices": [
+      { "label": "Map the economic forces driving the cycle", "next": "ss-end" },
+      { "label": "Design a policy experiment to test a solution", "next": "ss-end" }
+    ]
+  },
+  {
+    "id": "ss-end",
+    "school": "social-sciences",
+    "text": "Mi does a happy dance! You've found Social Sciences — where data, history, and human behavior meet.",
+    "unlocks": "social-sciences"
+  },
+  {
+    "id": "cs-start",
+    "school": "computational-sciences",
+    "text": "Mi enters a glowing server room. Screens flicker with mysterious data patterns and half-finished code. What do you do?",
+    "choices": [
+      { "label": "Debug the anomaly in the data stream", "next": "cs-2a" },
+      { "label": "Visualize the data to find hidden structure", "next": "cs-2b" }
+    ]
+  },
+  {
+    "id": "cs-2a",
+    "school": "computational-sciences",
+    "text": "The bug leads to an unexpected but elegant algorithm. What do you do with it?",
+    "choices": [
+      { "label": "Prove mathematically why it works", "next": "cs-end" },
+      { "label": "Build a system that uses it at scale", "next": "cs-end" }
+    ]
+  },
+  {
+    "id": "cs-2b",
+    "school": "computational-sciences",
+    "text": "The visualization reveals a pattern no one has noticed before. What next?",
+    "choices": [
+      { "label": "Write a formal proof of the pattern", "next": "cs-end" },
+      { "label": "Train a model to predict where it appears next", "next": "cs-end" }
+    ]
+  },
+  {
+    "id": "cs-end",
+    "school": "computational-sciences",
+    "text": "Mi blinks in awe! You've discovered Computational Sciences — the school of systems, logic, and elegant solutions.",
+    "unlocks": "computational-sciences"
+  },
+  {
+    "id": "ns-start",
+    "school": "natural-sciences",
+    "text": "Mi discovers a strange glowing specimen in a jungle clearing. No one has ever seen anything like it. What do you do?",
+    "choices": [
+      { "label": "Collect samples and run experiments", "next": "ns-2a" },
+      { "label": "Observe its behavior without disturbing it", "next": "ns-2b" }
+    ]
+  },
+  {
+    "id": "ns-2a",
+    "school": "natural-sciences",
+    "text": "The samples show unusual chemical properties unlike anything in the literature. What next?",
+    "choices": [
+      { "label": "Model the molecular structure", "next": "ns-end" },
+      { "label": "Test whether the compound has medical uses", "next": "ns-end" }
+    ]
+  },
+  {
+    "id": "ns-2b",
+    "school": "natural-sciences",
+    "text": "You notice it responds to temperature changes in a totally unexpected way. What do you explore?",
+    "choices": [
+      { "label": "Study how it evolved this adaptation", "next": "ns-end" },
+      { "label": "Measure what happens to the ecosystem if it disappears", "next": "ns-end" }
+    ]
+  },
+  {
+    "id": "ns-end",
+    "school": "natural-sciences",
+    "text": "Mi leaps with excitement! You've unlocked Natural Sciences — where curiosity and the scientific method meet the unknown.",
+    "unlocks": "natural-sciences"
+  },
+  {
+    "id": "biz-start",
+    "school": "business",
+    "text": "Mi walks into a student startup pitch competition. Three teams are presenting wildly different ideas. What do you do?",
+    "choices": [
+      { "label": "Evaluate which business model is most viable", "next": "biz-2a" },
+      { "label": "Spot the gap in the market none of them see", "next": "biz-2b" }
+    ]
+  },
+  {
+    "id": "biz-2a",
+    "school": "business",
+    "text": "One team's financials don't add up — their unit economics are off. How do you respond?",
+    "choices": [
+      { "label": "Build a revised model showing a better strategy", "next": "biz-end" },
+      { "label": "Research comparable companies to benchmark", "next": "biz-end" }
+    ]
+  },
+  {
+    "id": "biz-2b",
+    "school": "business",
+    "text": "You see a clear underserved customer segment all three teams are ignoring. What do you do?",
+    "choices": [
+      { "label": "Sketch a go-to-market strategy on the spot", "next": "biz-end" },
+      { "label": "Identify exactly who the overlooked customer is", "next": "biz-end" }
+    ]
+  },
+  {
+    "id": "biz-end",
+    "school": "business",
+    "text": "Mi claps! You've found the Business school — where strategy, entrepreneurship, and global markets come alive.",
+    "unlocks": "business"
+  }
+]
