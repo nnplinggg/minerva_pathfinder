@@ -104,7 +104,16 @@ function renderMap() {
 
 async function startAdventure(schoolId) {
   state.activeSchool = schoolId;
-  state.adventureNodes = await getAdventure(schoolId);
+  try {
+    state.adventureNodes = await getAdventure(schoolId);
+  } catch (err) {
+    console.error('[Pathfinder] Failed to load adventure for', schoolId, err);
+    return;
+  }
+  if (!state.adventureNodes.length) {
+    console.error('[Pathfinder] No adventure nodes found for', schoolId);
+    return;
+  }
   renderAdventureNode(state.adventureNodes[0].id);
 }
 
