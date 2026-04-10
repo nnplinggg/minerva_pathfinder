@@ -2,166 +2,430 @@
   {
     "id": "ah-start",
     "school": "arts-humanities",
-    "text": "Mi arrives at a colorful gallery wall covered in ancient symbols, poetry, and art from dozens of cultures. What do you explore first?",
+    "text": "Mi drifts into an enormous archive — walls of manuscripts, song recordings, and projected films all playing at once. A glowing sign reads: 'Every culture speaks. What calls to you?'",
     "choices": [
-      { "label": "Decode the ancient symbols", "next": "ah-2a" },
-      { "label": "Write a poem about what you see", "next": "ah-2b" }
+      { "label": "Decode the ancient manuscript", "next": "ah-branch-a", "tags": ["history", "literature", "evidence"] },
+      { "label": "Follow the protest song echoing from the hall", "next": "ah-branch-b", "tags": ["music", "social-change", "artistic-expression"] },
+      { "label": "Watch the silent film from 1920", "next": "ah-branch-c", "tags": ["film", "visual-arts", "narrative"] }
     ]
   },
   {
-    "id": "ah-2a",
+    "id": "ah-branch-a",
     "school": "arts-humanities",
-    "text": "The symbols form a philosophical argument about how humans perceive beauty. How do you respond?",
+    "text": "The manuscript is a philosophical treatise on justice — and two scholars have scrawled contradictory notes in the margins in different centuries.",
     "choices": [
-      { "label": "Challenge it with your own theory", "next": "ah-end" },
-      { "label": "Sketch it as a visual argument", "next": "ah-end" }
+      { "label": "Argue with one of their positions", "next": "ah-cluster-1", "tags": ["philosophy", "normative-ethics", "moral-philosophy"] },
+      { "label": "Trace how the argument changed over time", "next": "ah-cluster-2", "tags": ["historiography", "comparative-history", "historical-analysis"] }
     ]
   },
   {
-    "id": "ah-2b",
+    "id": "ah-branch-b",
     "school": "arts-humanities",
-    "text": "Your poem sparks a debate about storytelling across cultures. What do you do?",
+    "text": "The song is from a 1960s labor movement in Nairobi. It's half-poem, half-call-to-arms — and it still works.",
     "choices": [
-      { "label": "Compare narratives from different traditions", "next": "ah-end" },
-      { "label": "Explore how music shapes emotion", "next": "ah-end" }
+      { "label": "Study the historical forces that created it", "next": "ah-cluster-1", "tags": ["history", "social-movements", "political-philosophy"] },
+      { "label": "Analyze how the music amplifies the message", "next": "ah-cluster-3", "tags": ["music", "persuasion", "communication"] }
     ]
   },
   {
-    "id": "ah-end",
+    "id": "ah-branch-c",
     "school": "arts-humanities",
-    "text": "Mi cheers! You've uncovered the heart of Arts & Humanities — a school where ideas, creativity, and culture collide.",
-    "unlocks": "arts-humanities"
+    "text": "The film shows the same street corner in 1920, 1960, and 2020. Each version is denser, louder, stranger. And somehow more beautiful.",
+    "choices": [
+      { "label": "Write a comparative essay across the three eras", "next": "ah-cluster-2", "tags": ["narrative", "comparative-history", "close-reading"] },
+      { "label": "Recreate the 1960 version in a new medium", "next": "ah-cluster-3", "tags": ["creative-expression", "design", "artistic-expression"] }
+    ]
   },
+  {
+    "id": "ah-cluster-1",
+    "school": "arts-humanities",
+    "text": "Mi watches you connect an abstract argument with a real historical struggle. You're asking: 'What makes a just society?' — not as a thought experiment, but as a research question.",
+    "choices": [
+      { "label": "Follow the thread into political philosophy", "next": "ah-end-x", "tags": ["democracy", "ideology", "political-philosophy"] },
+      { "label": "Follow it into historical evidence and method", "next": "ah-end-x", "tags": ["evidence", "methodology", "historical-analysis"] }
+    ]
+  },
+  {
+    "id": "ah-cluster-2",
+    "school": "arts-humanities",
+    "text": "You keep finding the same pattern: stories that legitimize power, and other stories that resist it. In literature, film, history — the structure repeats.",
+    "choices": [
+      { "label": "Map the patterns across cultures and centuries", "next": "ah-end-y", "tags": ["cultural-studies", "identity", "cross-cultural"] },
+      { "label": "Apply a theoretical framework to explain them", "next": "ah-end-y", "tags": ["cultural-theory", "literary-criticism", "aesthetics"] }
+    ]
+  },
+  {
+    "id": "ah-cluster-3",
+    "school": "arts-humanities",
+    "text": "You realize that form carries meaning — how something is said shapes what is heard. Protest, poetry, design: all communication. All arguments.",
+    "choices": [
+      { "label": "Study the rhetoric behind art that persuades", "next": "ah-end-z", "tags": ["persuasion", "media", "propaganda"] },
+      { "label": "Make something that embodies your argument", "next": "ah-end-z", "tags": ["creative-writing", "structure", "design-thinking"] }
+    ]
+  },
+  {
+    "id": "ah-end-x",
+    "school": "arts-humanities",
+    "text": "Mi cheers! You're drawn to the big questions — justice, power, how societies justify themselves. A&H gives you philosophy, history, and theory as your toolkit.",
+    "unlocks": "arts-humanities",
+    "requiredTags": ["justice", "political-philosophy", "history"]
+  },
+  {
+    "id": "ah-end-y",
+    "school": "arts-humanities",
+    "text": "Mi leaps! You're a pattern-finder across cultures and time. A&H will give you the frameworks to see how identity, power, and meaning are constructed — and contested.",
+    "unlocks": "arts-humanities",
+    "requiredTags": ["cultural-studies", "literature", "identity"]
+  },
+  {
+    "id": "ah-end-z",
+    "school": "arts-humanities",
+    "text": "Mi spins! You're a maker-thinker — ideas feel incomplete until they take a form. A&H gives you both the theory and the creative practice.",
+    "unlocks": "arts-humanities",
+    "requiredTags": ["creative-expression", "communication", "artistic-expression"]
+  },
+
   {
     "id": "ss-start",
     "school": "social-sciences",
-    "text": "Mi lands in a bustling city square where people are loudly debating a new policy. What do you do?",
+    "text": "Mi lands in a global crisis room. Three screens show: a rising inequality graph, a protest that became a revolution, and a brain scan of a world leader making a bad decision. Where do you look first?",
     "choices": [
-      { "label": "Survey the crowd about their opinions", "next": "ss-2a" },
-      { "label": "Study the historical patterns behind the debate", "next": "ss-2b" }
+      { "label": "Analyze the inequality data", "next": "ss-branch-a", "tags": ["economics", "inequality", "statistics"] },
+      { "label": "Investigate what turned protest into revolution", "next": "ss-branch-b", "tags": ["political-science", "social-movements", "democracy"] },
+      { "label": "Study how the brain made that decision", "next": "ss-branch-c", "tags": ["neuroscience", "cognition", "behavioral-science"] }
     ]
   },
   {
-    "id": "ss-2a",
+    "id": "ss-branch-a",
     "school": "social-sciences",
-    "text": "The survey data reveals surprising divides along economic lines. How do you dig deeper?",
+    "text": "The data shows wealth concentration spiked every time a specific policy changed — but correlation isn't causation. How do you find the real mechanism?",
     "choices": [
-      { "label": "Build a model to predict future trends", "next": "ss-end" },
-      { "label": "Interview community leaders for context", "next": "ss-end" }
+      { "label": "Run a causal inference analysis", "next": "ss-cluster-1", "tags": ["causal-inference", "econometrics", "regression"] },
+      { "label": "Compare countries that took different policy paths", "next": "ss-cluster-2", "tags": ["comparative-politics", "development-economics", "public-policy"] }
     ]
   },
   {
-    "id": "ss-2b",
+    "id": "ss-branch-b",
     "school": "social-sciences",
-    "text": "History shows this argument has repeated for centuries. What's your next move?",
+    "text": "The revolution followed decades of eroding institutional trust. Scholars disagree: did the institutions fail, or did the people?",
     "choices": [
-      { "label": "Map the economic forces driving the cycle", "next": "ss-end" },
-      { "label": "Design a policy experiment to test a solution", "next": "ss-end" }
+      { "label": "Build a model of how institutional trust collapses", "next": "ss-cluster-1", "tags": ["institutions", "governance", "political-systems"] },
+      { "label": "Survey community members about their grievances", "next": "ss-cluster-3", "tags": ["social-psychology", "research-methods", "social-systems"] }
     ]
   },
   {
-    "id": "ss-end",
+    "id": "ss-branch-c",
     "school": "social-sciences",
-    "text": "Mi does a happy dance! You've found Social Sciences — where data, history, and human behavior meet.",
-    "unlocks": "social-sciences"
+    "text": "The brain scan shows fear activated before the 'rational' regions. The decision was emotional before it was logical.",
+    "choices": [
+      { "label": "Design a nudge to guide better decisions", "next": "ss-cluster-2", "tags": ["behavioral-economics", "nudging", "decision-making"] },
+      { "label": "Study how emotion shapes political behavior at scale", "next": "ss-cluster-3", "tags": ["emotion", "psychology", "political-theory"] }
+    ]
   },
+  {
+    "id": "ss-cluster-1",
+    "school": "social-sciences",
+    "text": "Mi grins. You keep asking 'why does this pattern persist?' and you won't settle for correlation. That's the social scientist's instinct: find the mechanism, then test it.",
+    "choices": [
+      { "label": "Formalize the mechanism as a mathematical model", "next": "ss-end-x", "tags": ["game-theory", "Nash-equilibrium", "macroeconomics"] },
+      { "label": "Test it with a natural experiment", "next": "ss-end-x", "tags": ["statistics", "public-policy", "causal-inference"] }
+    ]
+  },
+  {
+    "id": "ss-cluster-2",
+    "school": "social-sciences",
+    "text": "You've noticed that different societies made the same mistake — not because they're irrational, but because the structure of the choice made the wrong answer feel right.",
+    "choices": [
+      { "label": "Study how behavioral biases aggregate to systemic outcomes", "next": "ss-end-y", "tags": ["behavioral-science", "market-failures", "markets"] },
+      { "label": "Design institutions that correct for the bias", "next": "ss-end-y", "tags": ["policy", "governance", "rule-of-law"] }
+    ]
+  },
+  {
+    "id": "ss-cluster-3",
+    "school": "social-sciences",
+    "text": "The answers live in what people say, what they feel, and what they do — and those three things don't always match. You want to understand the gap.",
+    "choices": [
+      { "label": "Build a psychological model of political behavior", "next": "ss-end-z", "tags": ["social-psychology", "motivation", "behavior-change"] },
+      { "label": "Study how collective memory shapes group identity", "next": "ss-end-z", "tags": ["memory", "social-systems", "state-formation"] }
+    ]
+  },
+  {
+    "id": "ss-end-x",
+    "school": "social-sciences",
+    "text": "Mi claps! You're a rigorous analyst — you want to know why, and you won't stop until you've found something you can test. Social Sciences has the tools you need.",
+    "unlocks": "social-sciences",
+    "requiredTags": ["economics", "statistics", "causal-inference"]
+  },
+  {
+    "id": "ss-end-y",
+    "school": "social-sciences",
+    "text": "Mi dances! You see the structural patterns behind individual choices. Behavioral economics, institutions, and comparative politics — Social Sciences has your name on it.",
+    "unlocks": "social-sciences",
+    "requiredTags": ["behavioral-economics", "governance", "policy"]
+  },
+  {
+    "id": "ss-end-z",
+    "school": "social-sciences",
+    "text": "Mi gasps! You want to understand people — what they feel, how their history shapes them. Social psychology and political theory are waiting for you.",
+    "unlocks": "social-sciences",
+    "requiredTags": ["psychology", "social-psychology", "memory"]
+  },
+
   {
     "id": "cs-start",
     "school": "computational-sciences",
-    "text": "Mi enters a glowing server room. Screens flicker with mysterious data patterns and half-finished code. What do you do?",
+    "text": "Mi enters a glowing server room. Screens flicker with mysterious data patterns and three alerts flash simultaneously. Which do you investigate?",
     "choices": [
-      { "label": "Debug the anomaly in the data stream", "next": "cs-2a" },
-      { "label": "Visualize the data to find hidden structure", "next": "cs-2b" }
+      { "label": "The memory leak causing system failures", "next": "cs-branch-a", "tags": ["algorithms", "software-engineering", "computational-thinking"] },
+      { "label": "The unexplained pattern in the data stream", "next": "cs-branch-b", "tags": ["data-science", "modeling", "statistics"] },
+      { "label": "The formal proof of correctness that keeps failing", "next": "cs-branch-c", "tags": ["logic", "proof-writing", "mathematics"] }
     ]
   },
   {
-    "id": "cs-2a",
+    "id": "cs-branch-a",
     "school": "computational-sciences",
-    "text": "The bug leads to an unexpected but elegant algorithm. What do you do with it?",
+    "text": "The memory leak traces back to an unexpected recursive pattern. It's elegant — and shouldn't be possible at this scale.",
     "choices": [
-      { "label": "Prove mathematically why it works", "next": "cs-end" },
-      { "label": "Build a system that uses it at scale", "next": "cs-end" }
+      { "label": "Analyze its computational complexity", "next": "cs-cluster-1", "tags": ["complexity-theory", "algorithms", "NP-hardness"] },
+      { "label": "Optimize it with dynamic programming", "next": "cs-cluster-2", "tags": ["dynamic-programming", "optimization", "data-structures"] }
     ]
   },
   {
-    "id": "cs-2b",
+    "id": "cs-branch-b",
     "school": "computational-sciences",
-    "text": "The visualization reveals a pattern no one has noticed before. What next?",
+    "text": "The data pattern has a self-similar structure that grows at every resolution level. It shouldn't appear in this kind of data.",
     "choices": [
-      { "label": "Write a formal proof of the pattern", "next": "cs-end" },
-      { "label": "Train a model to predict where it appears next", "next": "cs-end" }
+      { "label": "Build a model to predict where it appears next", "next": "cs-cluster-1", "tags": ["machine-learning", "probabilistic-modeling", "inference"] },
+      { "label": "Map the network structure behind the pattern", "next": "cs-cluster-3", "tags": ["network-theory", "network-analysis", "complex-systems"] }
     ]
   },
   {
-    "id": "cs-end",
+    "id": "cs-branch-c",
     "school": "computational-sciences",
-    "text": "Mi blinks in awe! You've discovered Computational Sciences — the school of systems, logic, and elegant solutions.",
-    "unlocks": "computational-sciences"
+    "text": "The proof fails at the same step every time — not because the logic is wrong, but because the system has an edge case no one anticipated.",
+    "choices": [
+      { "label": "Formalize the edge case with abstract algebra", "next": "cs-cluster-2", "tags": ["abstract-algebra", "formal-languages", "theory-of-computation"] },
+      { "label": "Write a theorem prover to handle it automatically", "next": "cs-cluster-3", "tags": ["logic-programming", "automata", "Turing-machines"] }
+    ]
   },
+  {
+    "id": "cs-cluster-1",
+    "school": "computational-sciences",
+    "text": "Mi watches as you build something rigorous — a tool that doesn't just solve the problem, but proves why the solution works and predicts when it won't.",
+    "choices": [
+      { "label": "Extend it to handle real-world scale", "next": "cs-end-x", "tags": ["system-design", "python", "software-engineering"] },
+      { "label": "Prove tight upper and lower bounds on its performance", "next": "cs-end-x", "tags": ["proof-writing", "mathematics", "linear-algebra"] }
+    ]
+  },
+  {
+    "id": "cs-cluster-2",
+    "school": "computational-sciences",
+    "text": "You've found a mathematical structure that keeps appearing across apparently unrelated problems. It's not a coincidence. There's a deeper pattern.",
+    "choices": [
+      { "label": "Show it's connected to computational complexity", "next": "cs-end-y", "tags": ["complexity-theory", "theory-of-computation", "Turing-machines"] },
+      { "label": "Find a polynomial-time solution using the structure", "next": "cs-end-y", "tags": ["optimization", "linear-programming", "operations-research"] }
+    ]
+  },
+  {
+    "id": "cs-cluster-3",
+    "school": "computational-sciences",
+    "text": "The logical system you've built has unexpected expressive power — more than you designed it to have. That usually means you found something real.",
+    "choices": [
+      { "label": "Connect it to what's theoretically computable", "next": "cs-end-z", "tags": ["Turing-machines", "formal-languages", "automata"] },
+      { "label": "Apply it to analyze network behavior at scale", "next": "cs-end-z", "tags": ["network-analysis", "simulation", "dynamical-systems"] }
+    ]
+  },
+  {
+    "id": "cs-end-x",
+    "school": "computational-sciences",
+    "text": "Mi blinks in awe! You're a builder — you see systems and ask 'how can this scale, and how do I prove it's correct?' CS at Minerva will give you the depth to do both.",
+    "unlocks": "computational-sciences",
+    "requiredTags": ["software-engineering", "python", "system-design"]
+  },
+  {
+    "id": "cs-end-y",
+    "school": "computational-sciences",
+    "text": "Mi does a little spin! You're a theorist — you want to know the deep why behind computation, not just the how. CS theory and algorithms are where you'll live.",
+    "unlocks": "computational-sciences",
+    "requiredTags": ["complexity-theory", "mathematics", "optimization"]
+  },
+  {
+    "id": "cs-end-z",
+    "school": "computational-sciences",
+    "text": "Mi gasps! You're a logician-builder — you think in formal systems and want to make them do useful things. CS at Minerva lets you work from foundations to applications.",
+    "unlocks": "computational-sciences",
+    "requiredTags": ["logic", "automata", "theory-of-computation"]
+  },
+
   {
     "id": "ns-start",
     "school": "natural-sciences",
-    "text": "Mi discovers a strange glowing specimen in a jungle clearing. No one has ever seen anything like it. What do you do?",
+    "text": "Mi discovers a glowing specimen in a jungle clearing — nothing in any field guide even comes close. Three scientists rush in. Which do you follow?",
     "choices": [
-      { "label": "Collect samples and run experiments", "next": "ns-2a" },
-      { "label": "Observe its behavior without disturbing it", "next": "ns-2b" }
+      { "label": "The biochemist setting up a sample kit", "next": "ns-branch-a", "tags": ["biochemistry", "chemistry", "molecular-biology"] },
+      { "label": "The ecologist mapping the surrounding habitat", "next": "ns-branch-b", "tags": ["ecology", "biodiversity", "evolution"] },
+      { "label": "The physicist measuring its energy output", "next": "ns-branch-c", "tags": ["physics", "thermodynamics", "applied-physics"] }
     ]
   },
   {
-    "id": "ns-2a",
+    "id": "ns-branch-a",
     "school": "natural-sciences",
-    "text": "The samples show unusual chemical properties unlike anything in the literature. What next?",
+    "text": "The samples show a chemical structure unlike anything in the literature. It responds to light in a way that violates thermodynamic expectations.",
     "choices": [
-      { "label": "Model the molecular structure", "next": "ns-end" },
-      { "label": "Test whether the compound has medical uses", "next": "ns-end" }
+      { "label": "Model its molecular structure computationally", "next": "ns-cluster-1", "tags": ["molecular-biology", "biophysics", "computation"] },
+      { "label": "Test whether it could have pharmaceutical potential", "next": "ns-cluster-2", "tags": ["biomedical", "biotechnology", "organic-chemistry"] }
     ]
   },
   {
-    "id": "ns-2b",
+    "id": "ns-branch-b",
     "school": "natural-sciences",
-    "text": "You notice it responds to temperature changes in a totally unexpected way. What do you explore?",
+    "text": "The specimen is at the center of an invisible food web. If it disappeared, three other species would collapse. How did no one find it until now?",
     "choices": [
-      { "label": "Study how it evolved this adaptation", "next": "ns-end" },
-      { "label": "Measure what happens to the ecosystem if it disappears", "next": "ns-end" }
+      { "label": "Model the ecosystem cascade if it vanishes", "next": "ns-cluster-1", "tags": ["ecology", "climate-modeling", "biodiversity"] },
+      { "label": "Trace its evolutionary lineage", "next": "ns-cluster-3", "tags": ["evolution", "genetics", "natural-selection"] }
     ]
   },
   {
-    "id": "ns-end",
+    "id": "ns-branch-c",
     "school": "natural-sciences",
-    "text": "Mi leaps with excitement! You've unlocked Natural Sciences — where curiosity and the scientific method meet the unknown.",
-    "unlocks": "natural-sciences"
+    "text": "The energy readings are rhythmic — as if the specimen is computing. The physicist suspects quantum coherence at biological temperatures.",
+    "choices": [
+      { "label": "Design an experiment to test the quantum hypothesis", "next": "ns-cluster-2", "tags": ["quantum-mechanics", "applied-physics", "research-methods"] },
+      { "label": "Compare it to other known biophysical anomalies", "next": "ns-cluster-3", "tags": ["biophysics", "thermodynamics", "information-theory"] }
+    ]
   },
+  {
+    "id": "ns-cluster-1",
+    "school": "natural-sciences",
+    "text": "Mi watches intently as you work across scales — from molecular structure to ecosystem dynamics. You want the mechanism, at the deepest level.",
+    "choices": [
+      { "label": "Develop a predictive model of the system", "next": "ns-end-x", "tags": ["statistics", "data-analysis", "climate"] },
+      { "label": "Design experiments to validate the model", "next": "ns-end-x", "tags": ["research-methods", "biology", "life-sciences"] }
+    ]
+  },
+  {
+    "id": "ns-cluster-2",
+    "school": "natural-sciences",
+    "text": "You're at the intersection of physics and life. What looks like a biological mystery might be a window into universal chemical principles.",
+    "choices": [
+      { "label": "Synthesize the compound in a laboratory", "next": "ns-end-y", "tags": ["analytical-chemistry", "organic-chemistry", "biochemistry"] },
+      { "label": "Publish a theoretical framework for other researchers", "next": "ns-end-y", "tags": ["theoretical-physics", "quantum", "materials-science"] }
+    ]
+  },
+  {
+    "id": "ns-cluster-3",
+    "school": "natural-sciences",
+    "text": "You keep asking: what rules govern this thing's existence? Not just what it does, but why it's possible at all. That's the physicist-biologist's question.",
+    "choices": [
+      { "label": "Map its genome to understand what built it", "next": "ns-end-z", "tags": ["genomics", "genetics", "cell-biology"] },
+      { "label": "Model how it could have evolved from simpler forms", "next": "ns-end-z", "tags": ["evolution", "entropy", "life-sciences"] }
+    ]
+  },
+  {
+    "id": "ns-end-x",
+    "school": "natural-sciences",
+    "text": "Mi shouts with joy! You're a modeler — you see systems as governed by underlying rules that can be formalized and tested. Natural Sciences will give you the tools to find them.",
+    "unlocks": "natural-sciences",
+    "requiredTags": ["biology", "ecology", "data-analysis"]
+  },
+  {
+    "id": "ns-end-y",
+    "school": "natural-sciences",
+    "text": "Mi bounces excitedly! You're drawn to the boundary between physics and chemistry — where the rules of the universe show up in molecules and materials. This is where Natural Sciences lives.",
+    "unlocks": "natural-sciences",
+    "requiredTags": ["chemistry", "biochemistry", "physics"]
+  },
+  {
+    "id": "ns-end-z",
+    "school": "natural-sciences",
+    "text": "Mi gasps! You want to understand life at its deepest level — the code that writes organisms, the physics that makes them possible. Natural Sciences will blow your mind.",
+    "unlocks": "natural-sciences",
+    "requiredTags": ["genetics", "evolution", "biology"]
+  },
+
   {
     "id": "biz-start",
     "school": "business",
-    "text": "Mi walks into a student startup pitch competition. Three teams are presenting wildly different ideas. What do you do?",
+    "text": "Mi walks into a global startup pitch competition. Three teams present wildly different ideas. Which pulls your attention first?",
     "choices": [
-      { "label": "Evaluate which business model is most viable", "next": "biz-2a" },
-      { "label": "Spot the gap in the market none of them see", "next": "biz-2b" }
+      { "label": "A fintech startup promising to bank the unbanked", "next": "biz-branch-a", "tags": ["finance", "innovation", "global-business"] },
+      { "label": "A consumer brand that's profitable in year one", "next": "biz-branch-b", "tags": ["marketing", "consumer-behavior", "entrepreneurship"] },
+      { "label": "A B2B software company with no revenue but elite users", "next": "biz-branch-c", "tags": ["business-strategy", "venture-capital", "startup"] }
     ]
   },
   {
-    "id": "biz-2a",
+    "id": "biz-branch-a",
     "school": "business",
-    "text": "One team's financials don't add up — their unit economics are off. How do you respond?",
+    "text": "The fintech pitch has a compelling mission but the unit economics don't add up. The revenue model depends on assumptions that look very optimistic.",
     "choices": [
-      { "label": "Build a revised model showing a better strategy", "next": "biz-end" },
-      { "label": "Research comparable companies to benchmark", "next": "biz-end" }
+      { "label": "Rebuild the financial model from first principles", "next": "biz-cluster-1", "tags": ["financial-modeling", "valuation", "corporate-finance"] },
+      { "label": "Identify which assumption is most likely to fail", "next": "biz-cluster-2", "tags": ["risk-management", "forecasting", "capital-structure"] }
     ]
   },
   {
-    "id": "biz-2b",
+    "id": "biz-branch-b",
     "school": "business",
-    "text": "You see a clear underserved customer segment all three teams are ignoring. What do you do?",
+    "text": "The brand is profitable because customer acquisition is almost entirely word-of-mouth. But it won't scale without spending money — and spending money might break what makes it special.",
     "choices": [
-      { "label": "Sketch a go-to-market strategy on the spot", "next": "biz-end" },
-      { "label": "Identify exactly who the overlooked customer is", "next": "biz-end" }
+      { "label": "Design a growth strategy that protects the brand", "next": "biz-cluster-1", "tags": ["growth-strategy", "brand-strategy", "marketing"] },
+      { "label": "Research the psychology behind the product's appeal", "next": "biz-cluster-3", "tags": ["consumer-psychology", "user-research", "product-design"] }
     ]
   },
   {
-    "id": "biz-end",
+    "id": "biz-branch-c",
     "school": "business",
-    "text": "Mi claps! You've found the Business school — where strategy, entrepreneurship, and global markets come alive.",
-    "unlocks": "business"
+    "text": "The company has no revenue but three Fortune 500 companies use the product for free. They're waiting for the right moment to monetize — classic land-and-expand.",
+    "choices": [
+      { "label": "Map the go-to-market strategy for monetization", "next": "biz-cluster-2", "tags": ["go-to-market", "market-entry", "strategy"] },
+      { "label": "Analyze which customers to charge first and how", "next": "biz-cluster-3", "tags": ["market-research", "product-analytics", "operations"] }
+    ]
+  },
+  {
+    "id": "biz-cluster-1",
+    "school": "business",
+    "text": "Mi watches you work backwards from numbers to strategy. You're not just asking 'what's the plan?' — you're asking 'what would have to be true for this to work?'",
+    "choices": [
+      { "label": "Model three scenarios: pessimistic, base, optimistic", "next": "biz-end-x", "tags": ["financial-planning", "forecasting", "capital-allocation"] },
+      { "label": "Calculate the startup's intrinsic value", "next": "biz-end-x", "tags": ["valuation", "investment", "private-equity"] }
+    ]
+  },
+  {
+    "id": "biz-cluster-2",
+    "school": "business",
+    "text": "You see the business as a system of moving parts. The product works. The question is whether the market will reward the right behavior at the right time.",
+    "choices": [
+      { "label": "Build the full go-to-market playbook", "next": "biz-end-y", "tags": ["go-to-market", "marketing", "market-entry"] },
+      { "label": "Design the operations that make it executable", "next": "biz-end-y", "tags": ["supply-chain", "operations", "optimization"] }
+    ]
+  },
+  {
+    "id": "biz-cluster-3",
+    "school": "business",
+    "text": "You keep coming back to the customer. What do they actually want? Why this product over that one? What are they willing to pay for?",
+    "choices": [
+      { "label": "Run a rapid customer discovery sprint", "next": "biz-end-z", "tags": ["user-research", "consumer-behavior", "product-development"] },
+      { "label": "Build a brand that wins the customer's imagination", "next": "biz-end-z", "tags": ["branding", "brand-management", "consumer-psychology"] }
+    ]
+  },
+  {
+    "id": "biz-end-x",
+    "school": "business",
+    "text": "Mi claps loudly! You're a finance-and-strategy thinker — you want to know if it's viable and how to make it more so. The Business school will sharpen your analytical edge.",
+    "unlocks": "business",
+    "requiredTags": ["finance", "strategy", "valuation"]
+  },
+  {
+    "id": "biz-end-y",
+    "school": "business",
+    "text": "Mi spins! You're an operator — you understand that great strategy is worthless without execution. You want to build the machine, not just design it.",
+    "unlocks": "business",
+    "requiredTags": ["strategy", "operations", "marketing"]
+  },
+  {
+    "id": "biz-end-z",
+    "school": "business",
+    "text": "Mi gasps with delight! You're a builder with a user-first brain — you think in products, brands, and customer relationships. The Business school wants you.",
+    "unlocks": "business",
+    "requiredTags": ["entrepreneurship", "marketing", "product-development"]
   }
 ]
