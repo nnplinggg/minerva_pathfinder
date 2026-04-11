@@ -1,0 +1,87 @@
+[
+  {
+    "id": "SCHOOL-start",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Opening scenario. Mi arrives somewhere. What does the student see? Offer 3 choices that split into different intellectual directions.",
+    "choices": [
+      { "label": "✏️ Choice A label", "next": "SCHOOL-branch-a", "tags": ["✏️tag1", "✏️tag2", "✏️tag3"] },
+      { "label": "✏️ Choice B label", "next": "SCHOOL-branch-b", "tags": ["✏️tag1", "✏️tag2", "✏️tag3"] },
+      { "label": "✏️ Choice C label", "next": "SCHOOL-branch-c", "tags": ["✏️tag1", "✏️tag2", "✏️tag3"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-branch-a",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Branch A scenario. What does the student discover or encounter?",
+    "choices": [
+      { "label": "✏️ Choice leads to cluster-1", "next": "SCHOOL-cluster-1", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice leads to cluster-2", "next": "SCHOOL-cluster-2", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-branch-b",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Branch B scenario.",
+    "choices": [
+      { "label": "✏️ Choice leads to cluster-1", "next": "SCHOOL-cluster-1", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice leads to cluster-3", "next": "SCHOOL-cluster-3", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-branch-c",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Branch C scenario.",
+    "choices": [
+      { "label": "✏️ Choice leads to cluster-2", "next": "SCHOOL-cluster-2", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice leads to cluster-3", "next": "SCHOOL-cluster-3", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-cluster-1",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Cluster 1 scenario. Both branch-a and branch-b can reach here. All choices here lead to end-x.",
+    "choices": [
+      { "label": "✏️ Choice leads to end-x", "next": "SCHOOL-end-x", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice also leads to end-x (different tags)", "next": "SCHOOL-end-x", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-cluster-2",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Cluster 2 scenario. Both branch-a and branch-c can reach here. All choices here lead to end-y.",
+    "choices": [
+      { "label": "✏️ Choice leads to end-y", "next": "SCHOOL-end-y", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice also leads to end-y (different tags)", "next": "SCHOOL-end-y", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-cluster-3",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Cluster 3 scenario. Both branch-b and branch-c can reach here. All choices here lead to end-z.",
+    "choices": [
+      { "label": "✏️ Choice leads to end-z", "next": "SCHOOL-end-z", "tags": ["✏️tag1", "✏️tag2"] },
+      { "label": "✏️ Choice also leads to end-z (different tags)", "next": "SCHOOL-end-z", "tags": ["✏️tag1", "✏️tag2"] }
+    ]
+  },
+  {
+    "id": "SCHOOL-end-x",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Ending X. Mi reacts. Describe this student's intellectual identity — what makes them uniquely suited to this school. This is the payoff.",
+    "unlocks": "SCHOOL-ID",
+    "requiredTags": ["✏️tag1", "✏️tag2", "✏️tag3"]
+  },
+  {
+    "id": "SCHOOL-end-y",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Ending Y. A different intellectual identity from ending X.",
+    "unlocks": "SCHOOL-ID",
+    "requiredTags": ["✏️tag1", "✏️tag2", "✏️tag3"]
+  },
+  {
+    "id": "SCHOOL-end-z",
+    "school": "SCHOOL-ID",
+    "text": "✏️ Ending Z. A third intellectual identity.",
+    "unlocks": "SCHOOL-ID",
+    "requiredTags": ["✏️tag1", "✏️tag2", "✏️tag3"]
+  }
+]
