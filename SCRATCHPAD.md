@@ -2,14 +2,14 @@
 
 ## Current State
 
-**Status**: INITIALIZED
-**Active milestone**: M1 — Foundation & Discovery
-**Last session**: 2026-04-01
+**Status**: COMPLETE (M0–M3)
+**Active milestone**: none — all milestones done
+**Last session**: 2026-04-11
 
 **Next actions**:
-- [ ] Push initial commit to GitHub and enable Pages (M0)
-- [ ] Define feature specifications (M2)
-- [ ] Create initial JSON data files (M2)
+- [ ] Fix tag alignment for Arts & Humanities (8/60 paths fall back to all courses — add `film`, `visual-arts`, `narrative` tags to relevant AH courses in data/courses.json)
+- [ ] Playtest all 5 adventures and verify course recommendations feel relevant
+- [ ] Rewrite adventure stories if desired (see docs/adventure-writing-guide.md + data/adventures-template.json)
 
 ---
 
@@ -21,9 +21,9 @@
 - [x] Fill in GEMINI.md project identity section
 - [x] **Define AI Guardrails**: In `DECISIONS.md`, document how this project handles data privacy and human accountability.
 - [x] Define milestones M1–M3 below
-- [ ] Push initial commit to GitHub
-- [ ] Enable GitHub Pages in repository settings
-- [ ] Confirm live URL is accessible
+- [x] Push initial commit to GitHub
+- [x] Enable GitHub Pages in repository settings
+- [x] Confirm live URL is accessible
 
 ### M1 — Foundation & Discovery
 
@@ -95,6 +95,16 @@
 **Modifications & Verification**: Built 6 files from spec (data/adventures.json, data/courses.json, js/data.js, index.html, css/styles.css, js/app.js). Spec and code quality reviewed by automated subagents after each task.
 **Learning Reflection**: Designing a state machine in vanilla JS without a framework required explicit screen management — each screen is a distinct render function. The IIFE pattern in data.js shows how to create private scope without ES modules.
 **Session Link/Context**: Gamification design spec at docs/superpowers/specs/2026-04-10-gamification-design.md
+
+---
+
+### 2026-04-11: Adventure V2 — Deeper Branching + Interest-Based Course Matching
+
+**AI Tool(s) Used**: Claude Code (claude-sonnet-4-6)
+**Purpose**: Redesign adventure system with 3-level branching (3 endings/school), interest tag accumulation, and course recommendations filtered by student choices.
+**Modifications & Verification**: Rewrote data/adventures.json (20 → 50 nodes), added tags to all 68 courses via scripts/tag-courses.py, extended js/data.js with getMatchedCourses(), updated js/app.js state machine to accumulate tags and pass them through the unlock flow. Created authoring tools (data/adventures-template.json, docs/adventure-writing-guide.md). Spec and code quality reviewed by automated subagents after each of 6 tasks; final integration review confirmed no regressions. Known gap: 8/60 paths (mostly A&H) still fall back to all courses due to tag vocabulary mismatch — data fix pending.
+**Learning Reflection**: Tag-based matching requires deliberate alignment between two independently authored datasets (adventures and courses) — a design constraint that isn't visible in the code itself. The fallback mechanism (show all courses when <3 match) is what makes the system safe to deploy before that alignment is perfect.
+**Session Link/Context**: Spec at docs/superpowers/specs/2026-04-10-adventure-v2-design.md, plan at docs/superpowers/plans/2026-04-10-adventure-v2.md
 
 ---
 
