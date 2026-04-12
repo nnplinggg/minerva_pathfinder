@@ -7,9 +7,14 @@
 **Last session**: 2026-04-11
 
 **Next actions**:
-- [ ] Fix tag alignment for Arts & Humanities (8/60 paths fall back to all courses — add `film`, `visual-arts`, `narrative` tags to relevant AH courses in data/courses.json)
+- [x] Fix tag alignment for Arts & Humanities — DONE (commit 8106cb1)
 - [ ] Playtest all 5 adventures and verify course recommendations feel relevant
 - [ ] Rewrite adventure stories if desired (see docs/adventure-writing-guide.md + data/adventures-template.json)
+- [x] Build interactive world map — M4 (commit 0cb08a6)
+- [ ] Test map on browser: node unlock, chest modal, mobile layout
+- [ ] Fill in real URLs for 3 treasure chests in js/app.js (currently '#')
+- [ ] Drop Sprout Lands sprites into assets/sprites/ and uncomment background-image lines in CSS
+- [ ] Playtest all 5 adventures end-to-end
 
 ---
 
@@ -95,6 +100,26 @@
 **Modifications & Verification**: Built 6 files from spec (data/adventures.json, data/courses.json, js/data.js, index.html, css/styles.css, js/app.js). Spec and code quality reviewed by automated subagents after each task.
 **Learning Reflection**: Designing a state machine in vanilla JS without a framework required explicit screen management — each screen is a distinct render function. The IIFE pattern in data.js shows how to create private scope without ES modules.
 **Session Link/Context**: Gamification design spec at docs/superpowers/specs/2026-04-10-gamification-design.md
+
+---
+
+### 2026-04-12b: M4 World Map — Pixel Art Interactive Map
+
+**AI Tool(s) Used**: Claude Code (claude-sonnet-4-6)
+**Purpose**: Replace flat school grid with a Sprout Lands-style pixel-art top-down map featuring 5 school nodes, 3 progressive treasure chests, and a parchment modal popup.
+**Modifications & Verification**: Rewrote `#screen-map` HTML (replaced `.school-grid` with absolute-positioned `.pixel-map` canvas). Added 280+ lines of CSS: terrain background with vignette, decorative trees, school nodes (grey locked → gold glow unlocked), treasure chests (greyscale+🔒 → ✨ → gold opened) with sparkle keyframe, parchment modal with pixel drop-shadow, HUD counter, Mi marker, mobile responsive breakpoint. Extended `js/app.js`: added `CHESTS` constant, `openedChests` state, `loadOpenedChests`/`saveOpenedChests` localStorage helpers, rewrote `renderMap()`, added `openChest()` and modal close wiring. All CSS uses placeholder styling with commented swap-in lines for real Sprout Lands sprites. Committed as 0cb08a6.
+**Learning Reflection**: Absolute positioning with CSS custom properties (`--nx`, `--ny`) makes node placement declarative and easy to tune without touching JS. The placeholder-first asset strategy means the map is fully playable before any sprites are added.
+**Session Link/Context**: Spec at docs/superpowers/specs/2026-04-12-world-map.md, plan at docs/superpowers/plans/2026-04-12-world-map.md
+
+---
+
+### 2026-04-12: Tag Vocabulary Fix + World Map Brainstorm
+
+**AI Tool(s) Used**: Claude Code (claude-sonnet-4-6)
+**Purpose**: (1) Fix 8 failing adventure paths due to tag mismatch between adventures.json and courses.json. (2) Brainstorm interactive world map feature for M4.
+**Modifications & Verification**: Added missing tags to 8 courses (AH112 +film, AH113 +narrative, AH146 +film/narrative, AH166 +film, CS111 +proof-writing, CS142 +algorithms, SS110 +social-systems, SS162 +research-methods). Extended tag-courses.py with CSV export/import workflow (python3 scripts/tag-courses.py --export-csv / --from-csv). Generated data/tags.csv as spreadsheet-editable source of truth. Committed and pushed as 8106cb1. All 60/60 adventure paths now have matching courses.
+**Learning Reflection**: Tag-based matching requires explicit vocabulary alignment between two independently-authored datasets. The CSV workflow makes future tag edits accessible without touching Python.
+**Session Link/Context**: Spec for M4 world map at docs/superpowers/specs/2026-04-12-world-map.md
 
 ---
 
