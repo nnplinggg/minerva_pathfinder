@@ -2,7 +2,7 @@
 
 > A gamified, pixel-art web app that helps admitted and freshman Minerva students explore the university's 5 schools — through a choose-your-own-adventure story that ends with personalized course recommendations.
 
-**Live:** [[nnplinggg.github.io/admissions](https://nnplinggg.github.io/minerva_pathfinder )]
+**Live:** https://nnplinggg.github.io/minerva_pathfinder 
 
 ---
 
