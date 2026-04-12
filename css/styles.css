@@ -393,73 +393,14 @@ footer {
   width: min(820px, 95vw);
   aspect-ratio: 820 / 560;
   margin: 0 auto;
-  background-color: #6db840;
-  background-image:
-    /* Dirt path connecting nodes — horizontal + vertical cross */
-    radial-gradient(ellipse 55% 12% at 50% 42%, #c8a870 0%, transparent 100%),
-    radial-gradient(ellipse 12% 55% at 44% 48%, #c8a870 0%, transparent 100%),
-    /* Subtle grass texture variation */
-    radial-gradient(ellipse 30% 20% at 20% 30%, #79cc50 0%, transparent 60%),
-    radial-gradient(ellipse 25% 20% at 80% 70%, #79cc50 0%, transparent 60%),
-    radial-gradient(ellipse 20% 15% at 55% 80%, #7ed455 0%, transparent 60%);
-  /* When real tileset is ready, replace background above with:
-     background-image: url('../assets/map-bg.png');
-     background-size: cover; */
-  border: 4px solid #3a5c28;
+  background-image: url('../assets/map.png');
+  background-size: cover;
+  background-position: center;
+  background-color: #7ec850;
+  border: 3px solid #3a5c28;
   border-radius: 4px;
   overflow: hidden;
   image-rendering: pixelated;
-}
-
-/* Dark vignette edges (matches Sprout Lands reference) */
-.pixel-map::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse 100% 100% at 50% 50%,
-    transparent 60%,
-    rgba(50, 80, 30, 0.55) 100%);
-  pointer-events: none;
-  z-index: 10;
-}
-
-/* Decorative trees */
-.map-tree {
-  position: absolute;
-  left: var(--tx);
-  top: var(--ty);
-  width: 44px;
-  height: 52px;
-  image-rendering: pixelated;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Round foliage (circle) */
-.map-tree::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 40px;
-  height: 38px;
-  background: radial-gradient(circle at 45% 45%, #5db348 0%, #3a7a28 55%, #2a5c1a 100%);
-  border-radius: 50% 50% 45% 45%;
-  box-shadow: inset -4px -4px 6px rgba(0,0,0,0.2);
-}
-
-/* Trunk */
-.map-tree::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 10px;
-  height: 18px;
-  background: linear-gradient(90deg, #9a5c28 0%, #7a4018 50%, #5a3010 100%);
-  border-radius: 2px 2px 0 0;
 }
 
 /* ============================================================
@@ -484,56 +425,32 @@ footer {
 
 .map-node__sprite {
   display: block;
-  width: 40px;
-  height: 34px;
+  width: 52px;
+  height: 52px;
   image-rendering: pixelated;
-  /* Building body — grey stone when locked */
-  background: #9a9a9a;
-  border: 2px solid #555;
-  border-radius: 1px;
-  position: relative;
-  /* Swap in:
-     background-image: url('../assets/sprites/school-node-locked.png');
-     background-size: contain;
-     background-repeat: no-repeat; */
-  transition: filter 0.2s, transform 0.15s;
+  background-image: url('../assets/closed chest.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  transition: transform 0.15s;
 }
 
-/* Roof (triangle via border trick) */
-.map-node__sprite::before {
-  content: '';
-  position: absolute;
-  bottom: 100%;
-  left: 50%;
-  transform: translateX(-50%);
-  border-left: 23px solid transparent;
-  border-right: 23px solid transparent;
-  border-bottom: 14px solid #666;
-  filter: none;
-}
-
-/* Door */
-.map-node__sprite::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 11px;
-  height: 15px;
-  background: rgba(0,0,0,0.35);
-  border-radius: 2px 2px 0 0;
-}
+.map-node__sprite::before,
+.map-node__sprite::after { content: none; }
 
 .map-node__label {
   font-family: 'Press Start 2P', monospace;
   font-size: 5px;
-  color: #2a2a2a;
-  background: rgba(255,255,255,0.85);
-  padding: 2px 4px;
-  border: 1px solid #555;
+  color: #fff;
+  background: rgba(30, 20, 10, 0.72);
+  padding: 3px 6px;
+  border: 1px solid rgba(255,200,80,0.6);
+  border-radius: 2px;
   white-space: nowrap;
   pointer-events: none;
+  letter-spacing: 0.02em;
 }
 
 .map-node__stamp {
@@ -542,18 +459,8 @@ footer {
 }
 
 .map-node.discovered .map-node__sprite {
-  background: #f5c842;
-  border-color: #905112;
-  /* Swap in: background-image: url('../assets/sprites/school-node-unlocked.png'); */
-  filter: drop-shadow(0 0 6px rgba(240, 185, 30, 0.8));
-}
-
-.map-node.discovered .map-node__sprite::before {
-  border-bottom-color: #c07010;  /* warm brown roof when unlocked */
-}
-
-.map-node.discovered .map-node__sprite::after {
-  background: rgba(80, 30, 0, 0.5);
+  background-image: url('../assets/opened chest.PNG');
+  filter: drop-shadow(0 0 6px rgba(240, 185, 30, 0.7));
 }
 
 .map-node:hover .map-node__sprite,
@@ -572,133 +479,6 @@ footer {
   animation: node-unlock 0.5s ease;
 }
 
-/* ============================================================
-   TREASURE CHESTS  (Task 4)
-   ============================================================ */
-
-.map-chest {
-  position: absolute;
-  left: var(--cx);
-  top: var(--cy);
-  transform: translate(-50%, -50%);
-  width: 32px;
-  height: 28px;
-  background: none;
-  border: none;
-  cursor: not-allowed;
-  z-index: 5;
-  padding: 0;
-}
-
-.map-chest__sprite {
-  display: block;
-  width: 32px;
-  height: 28px;
-  image-rendering: pixelated;
-  background: linear-gradient(#a0622a 0%, #7c4a1e 100%);
-  border: 2px solid #5a3210;
-  border-radius: 2px;
-  position: relative;
-  filter: grayscale(60%) brightness(0.7);
-  /* Swap in:
-     background-image: url('../assets/sprites/chest-closed.png');
-     background-size: contain;
-     background-repeat: no-repeat; */
-  transition: filter 0.3s, transform 0.15s;
-}
-
-.map-chest__sprite::after {
-  content: '🔒';
-  font-size: 10px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-.map-chest.unlocked {
-  cursor: pointer;
-}
-
-.map-chest.unlocked .map-chest__sprite {
-  filter: none;
-}
-
-.map-chest.unlocked .map-chest__sprite::after {
-  content: '✨';
-}
-
-.map-chest.unlocked:hover .map-chest__sprite,
-.map-chest.unlocked:focus-visible .map-chest__sprite {
-  transform: scale(1.15);
-}
-
-.map-chest.opened .map-chest__sprite {
-  background: linear-gradient(#f0d080 0%, #c89030 100%);
-  border-color: #a07010;
-  filter: none;
-  /* Swap in: background-image: url('../assets/sprites/chest-open.png'); */
-}
-
-.map-chest.opened .map-chest__sprite::after {
-  content: '';
-}
-
-@keyframes chest-sparkle {
-  0%   { box-shadow: 0 0 0 0 rgba(240, 185, 30, 0); }
-  50%  { box-shadow: 0 0 12px 6px rgba(240, 185, 30, 0.9); }
-  100% { box-shadow: 0 0 4px 2px rgba(240, 185, 30, 0.4); }
-}
-
-.map-chest.just-unlocked .map-chest__sprite {
-  animation: chest-sparkle 0.8s ease forwards;
-}
-
-/* ============================================================
-   TREASURE CHEST MODAL  (Task 6)
-   ============================================================ */
-
-.chest-modal {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.65);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 100;
-}
-
-.chest-modal[hidden] {
-  display: none;
-}
-
-.chest-modal__box {
-  background: #f5edd8;
-  border: 4px solid #7c4a1e;
-  border-radius: 4px;
-  padding: 28px 24px;
-  max-width: 340px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 6px 6px 0 #3a2a10;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
-.chest-modal__icon {
-  font-size: 32px;
-}
-
-.chest-modal__fact {
-  font-family: 'Press Start 2P', monospace;
-  font-size: 7px;
-  line-height: 1.8;
-  color: #2a1a0a;
-  margin: 0;
-}
-
 .btn-pixel--gold {
   background: var(--mu-goldenrod);
   color: #2a1a0a;
@@ -707,6 +487,24 @@ footer {
   text-decoration: none;
   display: inline-block;
 }
+
+/* Big Play Button */
+.btn-start-img {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  image-rendering: pixelated;
+  transition: transform 0.1s;
+}
+.btn-start-img img {
+  width: 180px;
+  height: auto;
+  image-rendering: pixelated;
+  display: block;
+}
+.btn-start-img:hover { transform: scale(1.05); }
+.btn-start-img:active { transform: scale(0.97); }
 
 /* ============================================================
    HUD + MI MASCOT MARKER  (Task 7)
@@ -733,18 +531,25 @@ footer {
 
 .map-mi {
   position: absolute;
-  width: 20px;
-  height: 20px;
-  background: var(--mu-goldenrod);
-  border: 2px solid #905112;
-  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-image: url('../assets/character mi.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: transparent;
+  border: none;
+  border-radius: 0;
   z-index: 6;
   left: 52%;
-  top: 78%;  /* bottom-center, away from all nodes */
-  /* Swap in: background-image: url('../assets/sprites/mi-idle.png'); */
+  top: 76%;
   image-rendering: pixelated;
-  transition: left 0.6s ease, top 0.6s ease;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+  animation: idle-bounce-mi 1.4s ease-in-out infinite;
+}
+
+@keyframes idle-bounce-mi {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-4px); }
 }
 
 /* Mobile responsiveness */

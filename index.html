@@ -16,7 +16,9 @@
       <div class="mascot" id="mascot"></div>
       <h1 class="pixel-title">Minerva<br>Pathfinder</h1>
       <p class="pixel-sub">Meet Mi — your guide to Minerva's 5 schools.</p>
-      <button class="btn-pixel" id="btn-start">Start Adventure</button>
+      <button class="btn-start-img" id="btn-start">
+        <img src="assets/Big Play Button.png" alt="Start Adventure">
+      </button>
     </div>
   </div>
 
@@ -26,14 +28,7 @@
     <!-- Fixed-size pixel canvas. All nodes/chests positioned inside. -->
     <div class="pixel-map" id="pixel-map">
 
-      <!-- Decorative trees -->
-      <div class="map-tree" style="--tx:8%;  --ty:10%"></div>
-      <div class="map-tree" style="--tx:82%; --ty:8%"></div>
-      <div class="map-tree" style="--tx:5%;  --ty:75%"></div>
-      <div class="map-tree" style="--tx:88%; --ty:70%"></div>
-      <div class="map-tree" style="--tx:45%; --ty:85%"></div>
-
-      <!-- 5 School nodes -->
+      <!-- 5 School chests -->
       <button class="map-node" data-school="arts-humanities"
               style="--nx:12%; --ny:18%">
         <span class="map-node__sprite"></span>
@@ -67,17 +62,6 @@
         <span class="map-node__sprite"></span>
         <span class="map-node__label">Business</span>
         <span class="map-node__stamp" id="stamp-business"></span>
-      </button>
-
-      <!-- 3 Treasure chests -->
-      <button class="map-chest" data-chest="1" style="--cx:38%; --cy:18%">
-        <span class="map-chest__sprite"></span>
-      </button>
-      <button class="map-chest" data-chest="2" style="--cx:68%; --cy:42%">
-        <span class="map-chest__sprite"></span>
-      </button>
-      <button class="map-chest" data-chest="3" style="--cx:25%; --cy:55%">
-        <span class="map-chest__sprite"></span>
       </button>
 
       <!-- Mi mascot marker -->
@@ -127,18 +111,6 @@
       <div class="summary-blurb card" id="summary-blurb"></div>
       <p class="screenshot-cue">📸 Screenshot this to share your path!</p>
       <button class="btn-pixel btn-pixel--secondary" id="btn-summary-back">← Back to Map</button>
-    </div>
-  </div>
-
-  <!-- Treasure chest modal -->
-  <div id="chest-modal" class="chest-modal" hidden>
-    <div class="chest-modal__box" tabindex="-1">
-      <div class="chest-modal__icon">🎁</div>
-      <p class="chest-modal__fact" id="modal-fact"></p>
-      <a class="btn-pixel btn-pixel--gold" id="modal-link" href="#" target="_blank">
-        Find out more →
-      </a>
-      <button class="btn-pixel btn-pixel--secondary" id="modal-close">Close</button>
     </div>
   </div>
 
