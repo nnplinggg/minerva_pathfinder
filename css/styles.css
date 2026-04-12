@@ -235,16 +235,11 @@ footer {
 .mascot--idle { animation: idle-bounce 1.2s ease-in-out infinite; }
 .mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
 
-/* Adventure screen: even smaller so it doesn't block story text */
-.adventure-inner .mascot {
-  transform: scale(2);
-  margin: 2.5rem 0 1rem;
+/* Hide mascot on screens where it covers content */
+.adventure-inner .mascot,
+#screen-school-card .mascot {
+  display: none;
 }
-@keyframes idle-bounce-sm {
-  0%, 100% { transform: scale(2) translateY(0); }
-  50% { transform: scale(2) translateY(-2px); }
-}
-.adventure-inner .mascot--idle { animation: idle-bounce-sm 1.2s ease-in-out infinite; }
 
 /* World map school grid */
 .school-grid {
@@ -766,6 +761,11 @@ footer {
     width: 26px;
     height: 22px;
   }
+}
+
+/* See Results button (below map, only when all 5 found) */
+#btn-see-results {
+  margin-top: 1rem;
 }
 
 /* Footer override */

@@ -139,6 +139,11 @@ function renderMap() {
     node.onclick = () => startAdventure(id);
   });
 
+  // See Results button (visible only when all 5 discovered)
+  const resultsBtn = document.getElementById('btn-see-results');
+  resultsBtn.hidden = count < 5;
+  resultsBtn.onclick = renderSummary;
+
   // Treasure chests
   document.querySelectorAll('.map-chest').forEach(el => {
     const chestNum = parseInt(el.dataset.chest, 10);
@@ -252,13 +257,7 @@ async function renderSchoolCard(schoolId, accumulatedTags = []) {
     listEl.appendChild(li);
   });
 
-  document.getElementById('btn-return-map').onclick = () => {
-    if (state.discovered.length === 5) {
-      renderSummary();
-    } else {
-      renderMap();
-    }
-  };
+  document.getElementById('btn-return-map').onclick = () => renderMap();
 }
 
 // ============================================================
@@ -294,6 +293,9 @@ async function init() {
   document.getElementById('modal-close').onclick = () => {
     document.getElementById('chest-modal').hidden = true;
   };
+
+  // Wire summary back-to-map button
+  document.getElementById('btn-summary-back').onclick = () => renderMap();
 
   renderWelcome();
 }
