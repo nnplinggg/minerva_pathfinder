@@ -190,10 +190,6 @@ function renderMap() {
     node.onclick = () => startAdventure(id);
   });
 
-  // See Results button (visible only when all 5 discovered)
-  const resultsBtn = document.getElementById('btn-see-results');
-  resultsBtn.hidden = count < 5;
-  resultsBtn.onclick = renderSummary;
 }
 
 // ============================================================
@@ -279,27 +275,6 @@ async function renderSchoolCard(schoolId, accumulatedTags = []) {
 }
 
 // ============================================================
-// Summary screen
-// ============================================================
-
-function renderSummary() {
-  showScreen('summary');
-
-  const badgeRow = document.getElementById('badge-row');
-  badgeRow.innerHTML = '';
-  state.discovered.forEach(id => {
-    const badge = document.createElement('div');
-    badge.className = 'school-badge';
-    badge.textContent = `${SCHOOLS[id].icon} ${SCHOOLS[id].name}`;
-    badgeRow.appendChild(badge);
-  });
-
-  const firstSchool = state.discovered[0];
-  const blurbEl = document.getElementById('summary-blurb');
-  blurbEl.innerHTML = `<p>${SUMMARY_BLURBS[firstSchool]}</p>`;
-}
-
-// ============================================================
 // Init
 // ============================================================
 
@@ -308,9 +283,6 @@ async function init() {
 
   // Keyboard movement on map
   document.addEventListener('keydown', handleMapKeys);
-
-  // Wire summary back-to-map button
-  document.getElementById('btn-summary-back').onclick = () => renderMap();
 
   renderWelcome();
 }
