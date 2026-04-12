@@ -235,9 +235,9 @@ footer {
 .mascot--idle { animation: idle-bounce 1.2s ease-in-out infinite; }
 .mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
 
-/* Welcome screen Mi character */
+/* Welcome screen Mi character — same width as play button */
 .mi-welcome {
-  width: 20px;
+  width: min(260px, 70vw);
   height: auto;
   image-rendering: pixelated;
   animation: idle-bounce-mi 1.4s ease-in-out infinite;
@@ -506,7 +506,7 @@ footer {
   transition: transform 0.1s;
 }
 .btn-start-img img {
-  width: 180px;
+  width: min(260px, 70vw);
   height: auto;
   image-rendering: pixelated;
   display: block;
@@ -553,11 +553,18 @@ footer {
   top: 76%;
   image-rendering: pixelated;
   animation: idle-bounce-mi 1.4s ease-in-out infinite;
+  transition: left 0.08s linear, top 0.08s linear;
 }
 
 @keyframes idle-bounce-mi {
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-4px); }
+}
+
+/* Proximity highlight on school chests */
+.map-node.nearby .map-node__sprite {
+  filter: drop-shadow(0 0 8px rgba(255, 220, 50, 1)) brightness(1.1);
+  transform: scale(1.2);
 }
 
 /* Mobile responsiveness */

@@ -30,6 +30,16 @@ const SUMMARY_BLURBS = {
 
 const LS_KEY = 'minerva-pathfinder-discovered';
 
+// School positions on map (percentage x/y, matching --nx/--ny in HTML)
+const SCHOOL_POSITIONS = {
+  'arts-humanities':        { x: 12, y: 18 },
+  'social-sciences':        { x: 75, y: 15 },
+  'computational-sciences': { x: 78, y: 65 },
+  'natural-sciences':       { x: 10, y: 65 },
+  'business':               { x: 42, y: 40 },
+};
+const PROXIMITY_THRESHOLD = 9; // percent distance to trigger chest
+
 // ============================================================
 // State
 // ============================================================
@@ -41,6 +51,8 @@ const state = {
   adventureNodes: [],
   currentNodeId: null,
   accumulatedTags: [],
+  miX: 52,   // Mi position on map (%)
+  miY: 76,
 };
 
 // ============================================================
@@ -70,6 +82,60 @@ function showScreen(name) {
 }
 
 // ============================================================
+// Map keyboard movement + proximity
+// ============================================================
+
+function moveMi(dx, dy) {
+  state.miX = Math.max(4, Math.min(96, state.miX + dx));
+  state.miY = Math.max(4, Math.min(92, state.miY + dy));
+
+  const miEl = document.getElementById('map-mi');
+  miEl.style.left = `${state.miX}%`;
+  miEl.style.top  = `${state.miY}%`;
+
+  checkProximity();
+}
+
+function checkProximity() {
+  let nearest = null;
+  let nearestDist = Infinity;
+
+  for (const [id, pos] of Object.entries(SCHOOL_POSITIONS)) {
+    const dx   = state.miX - pos.x;
+    const dy   = state.miY - pos.y;
+    const dist = Math.sqrt(dx * dx + dy * dy);
+    const node = document.querySelector(`.map-node[data-school="${id}"]`);
+
+    if (dist < PROXIMITY_THRESHOLD) {
+      if (dist < nearestDist) { nearestDist = dist; nearest = { id, node }; }
+      node.classList.add('nearby');
+    } else {
+      node.classList.remove('nearby');
+    }
+  }
+
+  // Auto-open when very close (half threshold)
+  if (nearest && nearestDist < PROXIMITY_THRESHOLD / 2) {
+    nearest.node.classList.remove('nearby');
+    startAdventure(nearest.id);
+  }
+}
+
+function handleMapKeys(e) {
+  if (state.screen !== 'map') return;
+  const SPEED = 2.5;
+  const moves = {
+    ArrowUp:    [ 0, -SPEED],
+    ArrowDown:  [ 0,  SPEED],
+    ArrowLeft:  [-SPEED,  0],
+    ArrowRight: [ SPEED,  0],
+  };
+  if (!moves[e.key]) return;
+  e.preventDefault();
+  moveMi(...moves[e.key]);
+}
+
+// ============================================================
 // Welcome screen
 // ============================================================
 
@@ -96,6 +162,11 @@ function renderWelcome() {
 function renderMap() {
   showScreen('map');
   const count = state.discovered.length;
+
+  // Reset Mi position on map
+  const miEl = document.getElementById('map-mi');
+  miEl.style.left = `${state.miX}%`;
+  miEl.style.top  = `${state.miY}%`;
 
   // Update HUD
   document.getElementById('hud-count').textContent = `${count} / 5`;
@@ -229,6 +300,9 @@ function renderSummary() {
 
 async function init() {
   state.discovered = loadDiscovered();
+
+  // Keyboard movement on map
+  document.addEventListener('keydown', handleMapKeys);
 
   // Wire summary back-to-map button
   document.getElementById('btn-summary-back').onclick = () => renderMap();
