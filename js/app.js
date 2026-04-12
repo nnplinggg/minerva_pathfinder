@@ -163,10 +163,15 @@ function renderMap() {
   showScreen('map');
   const count = state.discovered.length;
 
-  // Reset Mi position on map
+  // Reset Mi to safe starting position (bottom-center, away from all chests)
+  state.miX = 50;
+  state.miY = 84;
   const miEl = document.getElementById('map-mi');
   miEl.style.left = `${state.miX}%`;
   miEl.style.top  = `${state.miY}%`;
+
+  // Clear any leftover nearby highlights
+  document.querySelectorAll('.map-node.nearby').forEach(n => n.classList.remove('nearby'));
 
   // Update HUD
   document.getElementById('hud-count').textContent = `${count} / 5`;
