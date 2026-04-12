@@ -238,7 +238,10 @@ function renderAdventureNode(nodeId, historySnapshot = _NO_PUSH) {
   const choicesEl = document.getElementById('choices');
   choicesEl.innerHTML = '';
 
+  const miDiagnosis = document.getElementById('mi-diagnosis');
+
   if (node.unlocks) {
+    miDiagnosis.hidden = false;
     // Diagnosis node: show CTA instead of auto-navigating
     const allTags = [...state.accumulatedTags, ...(node.requiredTags || [])];
     const cta = document.createElement('button');
@@ -248,6 +251,8 @@ function renderAdventureNode(nodeId, historySnapshot = _NO_PUSH) {
     choicesEl.appendChild(cta);
     return;
   }
+
+  miDiagnosis.hidden = true;
 
   node.choices.forEach(choice => {
     const btn = document.createElement('button');

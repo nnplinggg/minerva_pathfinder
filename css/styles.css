@@ -237,12 +237,14 @@ footer {
 .mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
 
 /* Welcome screen Mi character — same width as play button */
-.mi-welcome {
-  width: min(260px, 70vw);
+.mi-welcome,
+.mi-diagnosis {
+  width: min(195px, 52vw);
   height: auto;
   image-rendering: pixelated;
   animation: idle-bounce-mi 1.4s ease-in-out infinite;
 }
+.mi-diagnosis[hidden] { display: none; }
 
 /* Hide CSS mascot on screens where it covers content */
 .adventure-inner .mascot,
