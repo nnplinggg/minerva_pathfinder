@@ -28,7 +28,32 @@ const SUMMARY_BLURBS = {
   'business':               'You spotted the opportunity and thought about strategy first. The Business school at Minerva will sharpen that instinct into a superpower.',
 };
 
-const LS_KEY = 'minerva-pathfinder-discovered';
+const LS_KEY        = 'minerva-pathfinder-discovered';
+const LS_KEY_CHESTS = 'minerva-pathfinder-chests';
+
+const CHESTS = [
+  {
+    id: 'chest-1',
+    unlocksAt: 1,
+    fact: 'Minerva students live and study in 6 global cities across 4 years — the most internationally mobile university program in the world.',
+    linkLabel: 'Learn about city immersions →',
+    url: '#',
+  },
+  {
+    id: 'chest-2',
+    unlocksAt: 2,
+    fact: 'Minerva has no traditional lecture halls. Every class is a live, active-learning seminar — capped at 20 students — held via a custom video platform.',
+    linkLabel: 'See how classes work →',
+    url: '#',
+  },
+  {
+    id: 'chest-3',
+    unlocksAt: 3,
+    fact: '100% of Minerva graduates complete at least one internship or applied project before graduating — connecting coursework directly to real-world problems.',
+    linkLabel: 'Explore outcomes →',
+    url: '#',
+  },
+];
 
 // ============================================================
 // State
@@ -41,6 +66,7 @@ const state = {
   adventureNodes: [],
   currentNodeId: null,
   accumulatedTags: [],
+  openedChests: [],
 };
 
 // ============================================================
@@ -56,6 +82,17 @@ function loadDiscovered() {
 
 function saveDiscovered(discovered) {
   localStorage.setItem(LS_KEY, JSON.stringify(discovered));
+}
+
+function loadOpenedChests() {
+  try {
+    const raw = localStorage.getItem(LS_KEY_CHESTS);
+    return raw ? JSON.parse(raw) : [];
+  } catch { return []; }
+}
+
+function saveOpenedChests(opened) {
+  localStorage.setItem(LS_KEY_CHESTS, JSON.stringify(opened));
 }
 
 // ============================================================
@@ -83,20 +120,57 @@ function renderWelcome() {
 
 function renderMap() {
   showScreen('map');
+  const count = state.discovered.length;
+
+  // Update HUD
+  document.getElementById('hud-count').textContent = `${count} / 5`;
+
+  // School nodes
   Object.keys(SCHOOLS).forEach(id => {
-    const lockEl = document.getElementById(`lock-${id}`);
-    const tileEl = document.querySelector(`.zone-tile[data-school="${id}"]`);
+    const node  = document.querySelector(`.map-node[data-school="${id}"]`);
+    const stamp = document.getElementById(`stamp-${id}`);
     if (state.discovered.includes(id)) {
-      lockEl.textContent = '✅';
-      tileEl.classList.add('discovered');
+      node.classList.add('discovered');
+      stamp.textContent = '✅';
     } else {
-      lockEl.textContent = '🔒';
-      tileEl.classList.remove('discovered');
+      node.classList.remove('discovered');
+      stamp.textContent = '';
     }
+    node.onclick = () => startAdventure(id);
   });
-  document.querySelectorAll('.zone-tile').forEach(tile => {
-    tile.onclick = () => startAdventure(tile.dataset.school);
+
+  // Treasure chests
+  document.querySelectorAll('.map-chest').forEach(el => {
+    const chestNum = parseInt(el.dataset.chest, 10);
+    const chest    = CHESTS[chestNum - 1];
+    const isOpen   = state.openedChests.includes(chest.id);
+    const canOpen  = count >= chest.unlocksAt;
+
+    el.classList.toggle('unlocked', canOpen && !isOpen);
+    el.classList.toggle('opened',   isOpen);
+    el.classList.remove('just-unlocked');
+
+    el.onclick = (canOpen && !isOpen) ? () => openChest(chest, el) : null;
   });
+}
+
+function openChest(chest, chestEl) {
+  if (!state.openedChests.includes(chest.id)) {
+    state.openedChests.push(chest.id);
+    saveOpenedChests(state.openedChests);
+  }
+
+  chestEl.classList.remove('unlocked');
+  chestEl.classList.add('opened');
+
+  document.getElementById('modal-fact').textContent = chest.fact;
+  const link = document.getElementById('modal-link');
+  link.textContent = chest.linkLabel;
+  link.href        = chest.url;
+
+  const modal = document.getElementById('chest-modal');
+  modal.hidden = false;
+  modal.querySelector('.chest-modal__box').focus();
 }
 
 // ============================================================
@@ -213,7 +287,14 @@ function renderSummary() {
 // ============================================================
 
 async function init() {
-  state.discovered = loadDiscovered();
+  state.discovered   = loadDiscovered();
+  state.openedChests = loadOpenedChests();
+
+  // Wire modal close button
+  document.getElementById('modal-close').onclick = () => {
+    document.getElementById('chest-modal').hidden = true;
+  };
+
   renderWelcome();
 }
 

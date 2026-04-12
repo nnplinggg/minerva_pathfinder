@@ -22,36 +22,73 @@
 
   <!-- SCREEN: World Map -->
   <div id="screen-map" class="screen">
-    <div class="screen-inner">
-      <div class="mascot mascot--idle" id="mascot-map"></div>
-      <h2 class="pixel-title pixel-title--sm">Choose a School</h2>
-      <div class="school-grid" id="school-grid">
-        <button class="zone-tile" data-school="arts-humanities">
-          <span class="zone-icon">🎨</span>
-          <span class="zone-name">Arts &amp; Humanities</span>
-          <span class="zone-lock" id="lock-arts-humanities">🔒</span>
-        </button>
-        <button class="zone-tile" data-school="social-sciences">
-          <span class="zone-icon">🌍</span>
-          <span class="zone-name">Social Sciences</span>
-          <span class="zone-lock" id="lock-social-sciences">🔒</span>
-        </button>
-        <button class="zone-tile" data-school="computational-sciences">
-          <span class="zone-icon">⚡</span>
-          <span class="zone-name">Computational Sciences</span>
-          <span class="zone-lock" id="lock-computational-sciences">🔒</span>
-        </button>
-        <button class="zone-tile" data-school="natural-sciences">
-          <span class="zone-icon">🌿</span>
-          <span class="zone-name">Natural Sciences</span>
-          <span class="zone-lock" id="lock-natural-sciences">🔒</span>
-        </button>
-        <button class="zone-tile" data-school="business">
-          <span class="zone-icon">📈</span>
-          <span class="zone-name">Business</span>
-          <span class="zone-lock" id="lock-business">🔒</span>
-        </button>
+
+    <!-- Fixed-size pixel canvas. All nodes/chests positioned inside. -->
+    <div class="pixel-map" id="pixel-map">
+
+      <!-- Decorative trees -->
+      <div class="map-tree" style="--tx:8%;  --ty:10%"></div>
+      <div class="map-tree" style="--tx:82%; --ty:8%"></div>
+      <div class="map-tree" style="--tx:5%;  --ty:75%"></div>
+      <div class="map-tree" style="--tx:88%; --ty:70%"></div>
+      <div class="map-tree" style="--tx:45%; --ty:85%"></div>
+
+      <!-- 5 School nodes -->
+      <button class="map-node" data-school="arts-humanities"
+              style="--nx:12%; --ny:18%">
+        <span class="map-node__sprite"></span>
+        <span class="map-node__label">Arts &amp; Humanities</span>
+        <span class="map-node__stamp" id="stamp-arts-humanities"></span>
+      </button>
+
+      <button class="map-node" data-school="social-sciences"
+              style="--nx:75%; --ny:15%">
+        <span class="map-node__sprite"></span>
+        <span class="map-node__label">Social Sciences</span>
+        <span class="map-node__stamp" id="stamp-social-sciences"></span>
+      </button>
+
+      <button class="map-node" data-school="computational-sciences"
+              style="--nx:78%; --ny:65%">
+        <span class="map-node__sprite"></span>
+        <span class="map-node__label">Computational Sciences</span>
+        <span class="map-node__stamp" id="stamp-computational-sciences"></span>
+      </button>
+
+      <button class="map-node" data-school="natural-sciences"
+              style="--nx:10%; --ny:65%">
+        <span class="map-node__sprite"></span>
+        <span class="map-node__label">Natural Sciences</span>
+        <span class="map-node__stamp" id="stamp-natural-sciences"></span>
+      </button>
+
+      <button class="map-node" data-school="business"
+              style="--nx:42%; --ny:40%">
+        <span class="map-node__sprite"></span>
+        <span class="map-node__label">Business</span>
+        <span class="map-node__stamp" id="stamp-business"></span>
+      </button>
+
+      <!-- 3 Treasure chests -->
+      <button class="map-chest" data-chest="1" style="--cx:38%; --cy:18%">
+        <span class="map-chest__sprite"></span>
+      </button>
+      <button class="map-chest" data-chest="2" style="--cx:68%; --cy:42%">
+        <span class="map-chest__sprite"></span>
+      </button>
+      <button class="map-chest" data-chest="3" style="--cx:25%; --cy:55%">
+        <span class="map-chest__sprite"></span>
+      </button>
+
+      <!-- Mi mascot marker -->
+      <div class="map-mi" id="map-mi"></div>
+
+      <!-- Discovered counter HUD -->
+      <div class="map-hud">
+        <span class="map-hud__label">Schools found: </span>
+        <span class="map-hud__count" id="hud-count">0 / 5</span>
       </div>
+
     </div>
   </div>
 
@@ -88,6 +125,18 @@
       <div class="badge-row" id="badge-row"></div>
       <div class="summary-blurb card" id="summary-blurb"></div>
       <p class="screenshot-cue">📸 Screenshot this to share your path!</p>
+    </div>
+  </div>
+
+  <!-- Treasure chest modal -->
+  <div id="chest-modal" class="chest-modal" hidden>
+    <div class="chest-modal__box" tabindex="-1">
+      <div class="chest-modal__icon">🎁</div>
+      <p class="chest-modal__fact" id="modal-fact"></p>
+      <a class="btn-pixel btn-pixel--gold" id="modal-link" href="#" target="_blank">
+        Find out more →
+      </a>
+      <button class="btn-pixel btn-pixel--secondary" id="modal-close">Close</button>
     </div>
   </div>
 
