@@ -12,7 +12,7 @@ Admitted and freshman Minerva students face a wall of dense, text-heavy informat
 
 This creates anxiety, not excitement. Students struggle to find their intellectual "fit" before committing — or in their first year when choosing concentrations.
 
-**Minerva Pathfinder replaces "walls of text" with exploration.**
+**Minerva Pathfinder aims to facilitate personalized exploration.**
 
 ---
 
