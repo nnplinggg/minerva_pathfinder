@@ -350,11 +350,11 @@ footer {
 .course-item { border-left: 3px solid var(--mu-goldenrod); padding-left: 0.75rem; }
 .course-item__title {
   font-family: var(--pixel-font);
-  font-size: 0.45rem;
+  font-size: 0.6rem;
   color: var(--mu-obsidian);
   margin-bottom: 0.3rem;
 }
-.course-item__desc { font-size: 0.85rem; color: var(--mu-slate); margin: 0; }
+.course-item__desc { font-size: 0.75rem; color: var(--mu-slate); margin: 0; }
 
 /* Summary screen */
 .badge-row {
