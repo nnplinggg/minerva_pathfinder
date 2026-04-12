@@ -179,13 +179,4 @@ This project follows [Minerva University's Student AI Guardrails](Guardrails%20D
 
 ---
 
-## Product Documentation
-
-The PM artifacts behind this project are in [`pm-artifacts/`](pm-artifacts/):
-- [Problem Statement](pm-artifacts/problem-statement.md)
-- [Problem Framing Canvas](pm-artifacts/problem-framing-canvas.md)
-- [Data Requirements](pm-artifacts/data-requirements.md)
-
----
-
 *Minerva Pathfinder — Student Project, Spring 2026*
