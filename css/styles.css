@@ -202,8 +202,8 @@ footer {
   width: 16px;
   height: 16px;
   image-rendering: pixelated;
-  transform: scale(6);
-  margin: 2rem 0;
+  transform: scale(3);
+  margin: 3rem 0 2rem;   /* extra top margin to compensate for visual overflow above */
   background: var(--mu-goldenrod);
   border-radius: 2px;
   box-shadow:
@@ -224,16 +224,27 @@ footer {
 
 /* Mascot animations */
 @keyframes idle-bounce {
-  0%, 100% { transform: scale(6) translateY(0); }
-  50% { transform: scale(6) translateY(-3px); }
+  0%, 100% { transform: scale(3) translateY(0); }
+  50% { transform: scale(3) translateY(-3px); }
 }
 @keyframes celebrate {
-  0%, 100% { transform: scale(6) rotate(0deg); }
-  25% { transform: scale(6) rotate(-8deg); }
-  75% { transform: scale(6) rotate(8deg); }
+  0%, 100% { transform: scale(3) rotate(0deg); }
+  25% { transform: scale(3) rotate(-8deg); }
+  75% { transform: scale(3) rotate(8deg); }
 }
 .mascot--idle { animation: idle-bounce 1.2s ease-in-out infinite; }
 .mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
+
+/* Adventure screen: even smaller so it doesn't block story text */
+.adventure-inner .mascot {
+  transform: scale(2);
+  margin: 2.5rem 0 1rem;
+}
+@keyframes idle-bounce-sm {
+  0%, 100% { transform: scale(2) translateY(0); }
+  50% { transform: scale(2) translateY(-2px); }
+}
+.adventure-inner .mascot--idle { animation: idle-bounce-sm 1.2s ease-in-out infinite; }
 
 /* World map school grid */
 .school-grid {
@@ -387,10 +398,15 @@ footer {
   width: min(820px, 95vw);
   aspect-ratio: 820 / 560;
   margin: 0 auto;
-  background-color: #7ec850;
+  background-color: #6db840;
   background-image:
-    radial-gradient(ellipse 60% 30% at 50% 52%, #d4b896 0%, transparent 70%),
-    radial-gradient(ellipse 20% 40% at 50% 25%, #c9a87a 0%, transparent 60%);
+    /* Dirt path connecting nodes — horizontal + vertical cross */
+    radial-gradient(ellipse 55% 12% at 50% 42%, #c8a870 0%, transparent 100%),
+    radial-gradient(ellipse 12% 55% at 44% 48%, #c8a870 0%, transparent 100%),
+    /* Subtle grass texture variation */
+    radial-gradient(ellipse 30% 20% at 20% 30%, #79cc50 0%, transparent 60%),
+    radial-gradient(ellipse 25% 20% at 80% 70%, #79cc50 0%, transparent 60%),
+    radial-gradient(ellipse 20% 15% at 55% 80%, #7ed455 0%, transparent 60%);
   /* When real tileset is ready, replace background above with:
      background-image: url('../assets/map-bg.png');
      background-size: cover; */
@@ -417,18 +433,38 @@ footer {
   position: absolute;
   left: var(--tx);
   top: var(--ty);
-  width: 48px;
-  height: 56px;
-  background:
-    radial-gradient(circle 20px at 50% 38%, #4a8c3a 0%, #2e6622 100%),
-    linear-gradient(#7c4a1e 0%, #5a3210 100%);
-  background-size: 100% 70%, 30% 40%;
-  background-position: center top, center bottom;
-  background-repeat: no-repeat;
-  /* Swap in: background-image: url('../assets/sprites/tree.png'); */
+  width: 44px;
+  height: 52px;
   image-rendering: pixelated;
   pointer-events: none;
   z-index: 2;
+}
+
+/* Round foliage (circle) */
+.map-tree::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 40px;
+  height: 38px;
+  background: radial-gradient(circle at 45% 45%, #5db348 0%, #3a7a28 55%, #2a5c1a 100%);
+  border-radius: 50% 50% 45% 45%;
+  box-shadow: inset -4px -4px 6px rgba(0,0,0,0.2);
+}
+
+/* Trunk */
+.map-tree::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 10px;
+  height: 18px;
+  background: linear-gradient(90deg, #9a5c28 0%, #7a4018 50%, #5a3010 100%);
+  border-radius: 2px 2px 0 0;
 }
 
 /* ============================================================
@@ -454,16 +490,44 @@ footer {
 .map-node__sprite {
   display: block;
   width: 40px;
-  height: 40px;
+  height: 34px;
   image-rendering: pixelated;
-  background: #8a8a8a;
-  border: 3px solid #555;
-  border-radius: 2px;
+  /* Building body — grey stone when locked */
+  background: #9a9a9a;
+  border: 2px solid #555;
+  border-radius: 1px;
+  position: relative;
   /* Swap in:
      background-image: url('../assets/sprites/school-node-locked.png');
      background-size: contain;
      background-repeat: no-repeat; */
   transition: filter 0.2s, transform 0.15s;
+}
+
+/* Roof (triangle via border trick) */
+.map-node__sprite::before {
+  content: '';
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-left: 23px solid transparent;
+  border-right: 23px solid transparent;
+  border-bottom: 14px solid #666;
+  filter: none;
+}
+
+/* Door */
+.map-node__sprite::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 11px;
+  height: 15px;
+  background: rgba(0,0,0,0.35);
+  border-radius: 2px 2px 0 0;
 }
 
 .map-node__label {
@@ -483,10 +547,18 @@ footer {
 }
 
 .map-node.discovered .map-node__sprite {
-  background: #f0b91e;
+  background: #f5c842;
   border-color: #905112;
   /* Swap in: background-image: url('../assets/sprites/school-node-unlocked.png'); */
   filter: drop-shadow(0 0 6px rgba(240, 185, 30, 0.8));
+}
+
+.map-node.discovered .map-node__sprite::before {
+  border-bottom-color: #c07010;  /* warm brown roof when unlocked */
+}
+
+.map-node.discovered .map-node__sprite::after {
+  background: rgba(80, 30, 0, 0.5);
 }
 
 .map-node:hover .map-node__sprite,
@@ -666,17 +738,18 @@ footer {
 
 .map-mi {
   position: absolute;
-  width: 24px;
-  height: 24px;
-  background: #fff;
-  border: 2px solid #f0b91e;
+  width: 20px;
+  height: 20px;
+  background: var(--mu-goldenrod);
+  border: 2px solid #905112;
   border-radius: 50%;
   z-index: 6;
-  left: 42%;
-  top: 42%;
+  left: 52%;
+  top: 78%;  /* bottom-center, away from all nodes */
   /* Swap in: background-image: url('../assets/sprites/mi-idle.png'); */
   image-rendering: pixelated;
   transition: left 0.6s ease, top 0.6s ease;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
 }
 
 /* Mobile responsiveness */
