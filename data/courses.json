@@ -38,7 +38,8 @@
       "literature",
       "music",
       "social-change",
-      "creative-expression"
+      "creative-expression",
+      "film"
     ]
   },
   {
@@ -51,7 +52,8 @@
       "design-thinking",
       "material-culture",
       "technology",
-      "interdisciplinary"
+      "interdisciplinary",
+      "narrative"
     ]
   },
   {
@@ -90,7 +92,9 @@
       "literary-criticism",
       "close-reading",
       "aesthetics",
-      "form"
+      "form",
+      "film",
+      "narrative"
     ]
   },
   {
@@ -168,7 +172,8 @@
       "creative-writing",
       "communication",
       "narrative",
-      "media"
+      "media",
+      "film"
     ]
   },
   {
@@ -376,7 +381,8 @@
       "mathematics",
       "applied-math",
       "numerical-methods",
-      "differential-equations"
+      "differential-equations",
+      "proof-writing"
     ]
   },
   {
@@ -428,7 +434,8 @@
       "automata",
       "formal-languages",
       "complexity-theory",
-      "Turing-machines"
+      "Turing-machines",
+      "algorithms"
     ]
   },
   {
@@ -740,7 +747,8 @@
       "neuroscience",
       "cognition",
       "social-psychology",
-      "brain"
+      "brain",
+      "social-systems"
     ]
   },
   {
@@ -857,7 +865,8 @@
       "motivation",
       "social-psychology",
       "behavior-change",
-      "health-psychology"
+      "health-psychology",
+      "research-methods"
     ]
   },
   {
