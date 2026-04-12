@@ -589,6 +589,120 @@ footer {
   margin-top: 1rem;
 }
 
+/* ============================================================
+   ADVENTURE NAVIGATION BAR
+   ============================================================ */
+
+.adventure-nav {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.btn-nav {
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  background: var(--mu-bone);
+  color: var(--mu-obsidian);
+  border: 2px solid var(--mu-obsidian);
+  padding: 0.4rem 0.7rem;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 var(--mu-charcoal);
+  transition: transform 0.1s, box-shadow 0.1s;
+  line-height: 1.6;
+}
+.btn-nav:hover { transform: translate(1px, 1px); box-shadow: 1px 1px 0 var(--mu-charcoal); }
+.btn-nav--exit { margin-left: auto; }
+/* Back button is hidden by default via JS; keep it in flow when visible */
+.btn-nav[hidden] { display: none; }
+/* When both visible, push exit to far right */
+.adventure-nav:has(.btn-nav:not([hidden])) { justify-content: space-between; }
+
+/* ============================================================
+   DIAGNOSIS CTA BUTTON
+   ============================================================ */
+
+.cta-discover {
+  font-family: var(--pixel-font);
+  font-size: 0.6rem;
+  background: var(--mu-goldenrod);
+  color: #2a1a0a;
+  border: 3px solid var(--mu-clay);
+  padding: 1.2rem 1.5rem;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 var(--mu-clay);
+  transition: transform 0.1s, box-shadow 0.1s;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  justify-content: center;
+  line-height: 2;
+  text-align: center;
+}
+.cta-discover:hover { transform: translate(2px, 2px); box-shadow: 3px 3px 0 var(--mu-clay); }
+.cta-discover__arrow { font-size: 1.2rem; flex-shrink: 0; }
+
+/* ============================================================
+   COURSES TOOLTIP
+   ============================================================ */
+
+.courses-title-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+.courses-title-row .school-card__courses-title { margin-bottom: 0; }
+
+.tooltip-btn {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--mu-goldenrod);
+  color: var(--mu-obsidian);
+  border: 1px solid var(--mu-clay);
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  padding: 0;
+}
+.tooltip-btn:hover { background: var(--mu-tangerine); }
+
+.tooltip-box {
+  background: #fffbe6;
+  border: 2px solid var(--mu-goldenrod);
+  padding: 0.75rem 1rem;
+  margin-bottom: 0.75rem;
+  font-family: var(--pixel-font);
+  font-size: 0.4rem;
+  line-height: 2;
+  color: var(--mu-charcoal);
+  box-shadow: 2px 2px 0 var(--mu-clay);
+}
+.tooltip-box[hidden] { display: none; }
+
+/* ============================================================
+   CATALOG LINK
+   ============================================================ */
+
+.catalog-link {
+  display: block;
+  margin-top: 1rem;
+  font-family: var(--pixel-font);
+  font-size: 0.45rem;
+  color: var(--mu-clay);
+  text-decoration: none;
+  border-top: 1px solid var(--mu-ash);
+  padding-top: 0.75rem;
+  line-height: 2;
+}
+.catalog-link:hover { text-decoration: underline; color: var(--mu-tangerine); }
+
 /* Footer override */
 footer { margin-top: 0; }
 .footer-content {

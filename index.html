@@ -80,7 +80,10 @@
   <!-- SCREEN: Adventure -->
   <div id="screen-adventure" class="screen">
     <div class="screen-inner adventure-inner">
-      <div class="mascot" id="mascot-adventure"></div>
+      <div class="adventure-nav">
+        <button class="btn-nav" id="btn-adventure-back" hidden>← Back</button>
+        <button class="btn-nav btn-nav--exit" id="btn-adventure-exit">✕ Map</button>
+      </div>
       <div class="story-box">
         <p class="story-text" id="story-text"></p>
       </div>
@@ -95,7 +98,13 @@
       <div class="school-card card">
         <h2 class="school-card__name" id="card-name"></h2>
         <p class="school-card__desc" id="card-desc"></p>
-        <h3 class="school-card__courses-title">Courses you might take:</h3>
+        <div class="courses-title-row">
+          <h3 class="school-card__courses-title">Courses you might take:</h3>
+          <button class="tooltip-btn" id="tooltip-btn" aria-label="How matching works">?</button>
+        </div>
+        <div class="tooltip-box" id="tooltip-box" hidden>
+          Courses are matched to your adventure choices. We look for courses that share at least 2 interest tags with your path through the story.
+        </div>
         <ul class="course-list" id="course-list"></ul>
       </div>
       <button class="btn-pixel btn-pixel--secondary" id="btn-return-map">Back to Map</button>

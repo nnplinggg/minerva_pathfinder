@@ -44,6 +44,8 @@ const PROXIMITY_THRESHOLD = 9; // percent distance to trigger chest
 // State
 // ============================================================
 
+const _NO_PUSH = {}; // sentinel: don't record this nav in history
+
 const state = {
   screen: 'welcome',
   discovered: [],
@@ -51,6 +53,7 @@ const state = {
   adventureNodes: [],
   currentNodeId: null,
   accumulatedTags: [],
+  adventureHistory: [],  // [{ nodeId, tags }]
   miX: 52,   // Mi position on map (%)
   miY: 76,
 };
@@ -199,6 +202,8 @@ function renderMap() {
 async function startAdventure(schoolId) {
   state.activeSchool = schoolId;
   state.accumulatedTags = [];
+  state.adventureHistory = [];
+  state.currentNodeId = null;
   try {
     state.adventureNodes = await getAdventure(schoolId);
   } catch (err) {
@@ -212,11 +217,21 @@ async function startAdventure(schoolId) {
   renderAdventureNode(state.adventureNodes[0].id);
 }
 
-function renderAdventureNode(nodeId) {
+// historySnapshot: tags[] to save with the current node in history, or _NO_PUSH to skip recording
+function renderAdventureNode(nodeId, historySnapshot = _NO_PUSH) {
   const node = state.adventureNodes.find(n => n.id === nodeId);
   if (!node) return;
+
+  // Push current node + tag snapshot to history (so Back can restore it)
+  if (historySnapshot !== _NO_PUSH && state.currentNodeId !== null) {
+    state.adventureHistory.push({ nodeId: state.currentNodeId, tags: historySnapshot });
+  }
   state.currentNodeId = nodeId;
   showScreen('adventure');
+
+  // Show/hide Back button
+  const backBtn = document.getElementById('btn-adventure-back');
+  backBtn.hidden = state.adventureHistory.length === 0;
 
   document.getElementById('story-text').textContent = node.text;
 
@@ -224,8 +239,13 @@ function renderAdventureNode(nodeId) {
   choicesEl.innerHTML = '';
 
   if (node.unlocks) {
+    // Diagnosis node: show CTA instead of auto-navigating
     const allTags = [...state.accumulatedTags, ...(node.requiredTags || [])];
-    setTimeout(() => unlockSchool(node.unlocks, allTags), 1200);
+    const cta = document.createElement('button');
+    cta.className = 'cta-discover';
+    cta.innerHTML = '<span class="cta-discover__arrow">→</span>Discover your course suggestions';
+    cta.onclick = () => unlockSchool(node.unlocks, allTags);
+    choicesEl.appendChild(cta);
     return;
   }
 
@@ -234,11 +254,19 @@ function renderAdventureNode(nodeId) {
     btn.className = 'choice-btn';
     btn.textContent = choice.label;
     btn.onclick = () => {
+      const prevTags = [...state.accumulatedTags]; // snapshot before this choice
       state.accumulatedTags.push(...(choice.tags || []));
-      renderAdventureNode(choice.next);
+      renderAdventureNode(choice.next, prevTags);
     };
     choicesEl.appendChild(btn);
   });
+}
+
+function goBackAdventure() {
+  const prev = state.adventureHistory.pop();
+  if (!prev) return;
+  state.accumulatedTags = [...prev.tags];
+  renderAdventureNode(prev.nodeId); // _NO_PUSH default — won't re-record
 }
 
 // ============================================================
@@ -258,6 +286,11 @@ async function renderSchoolCard(schoolId, accumulatedTags = []) {
   document.getElementById('card-name').textContent = SCHOOLS[schoolId].name;
   document.getElementById('card-desc').textContent = SCHOOL_DESCS[schoolId];
 
+  // Reset tooltip
+  const tooltipBox = document.getElementById('tooltip-box');
+  tooltipBox.hidden = true;
+  document.getElementById('tooltip-btn').onclick = () => { tooltipBox.hidden = !tooltipBox.hidden; };
+
   const courses = await getMatchedCourses(schoolId, accumulatedTags);
   const listEl = document.getElementById('course-list');
   listEl.innerHTML = '';
@@ -271,6 +304,17 @@ async function renderSchoolCard(schoolId, accumulatedTags = []) {
     listEl.appendChild(li);
   });
 
+  // Catalog link (remove old one first to avoid duplicates on revisit)
+  document.getElementById('catalog-link')?.remove();
+  const link = document.createElement('a');
+  link.id = 'catalog-link';
+  link.className = 'catalog-link';
+  link.href = 'https://course-resources.minerva.edu/uploaded_files/mu/00392403-0617/course-catalog-rev-352.pdf';
+  link.target = '_blank';
+  link.rel = 'noopener noreferrer';
+  link.textContent = '📚 Browse full course catalog →';
+  listEl.after(link);
+
   document.getElementById('btn-return-map').onclick = () => renderMap();
 }
 
@@ -283,6 +327,10 @@ async function init() {
 
   // Keyboard movement on map
   document.addEventListener('keydown', handleMapKeys);
+
+  // Adventure navigation
+  document.getElementById('btn-adventure-back').onclick = goBackAdventure;
+  document.getElementById('btn-adventure-exit').onclick = () => renderMap();
 
   renderWelcome();
 }
