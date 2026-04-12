@@ -235,7 +235,15 @@ footer {
 .mascot--idle { animation: idle-bounce 1.2s ease-in-out infinite; }
 .mascot--celebrate { animation: celebrate 0.4s ease-in-out 3; }
 
-/* Hide mascot on screens where it covers content */
+/* Welcome screen Mi character */
+.mi-welcome {
+  width: 120px;
+  height: auto;
+  image-rendering: pixelated;
+  animation: idle-bounce-mi 1.4s ease-in-out infinite;
+}
+
+/* Hide CSS mascot on screens where it covers content */
 .adventure-inner .mascot,
 #screen-school-card .mascot {
   display: none;
@@ -428,7 +436,7 @@ footer {
   width: 52px;
   height: 52px;
   image-rendering: pixelated;
-  background-image: url('../assets/closed chest.png');
+  background-image: url('../assets/closed-chest.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -459,7 +467,7 @@ footer {
 }
 
 .map-node.discovered .map-node__sprite {
-  background-image: url('../assets/opened chest.PNG');
+  background-image: url('../assets/opened-chest.png');
   filter: drop-shadow(0 0 6px rgba(240, 185, 30, 0.7));
 }
 
@@ -533,7 +541,7 @@ footer {
   position: absolute;
   width: 40px;
   height: 40px;
-  background-image: url('../assets/character mi.png');
+  background-image: url('../assets/character-mi.png');
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
