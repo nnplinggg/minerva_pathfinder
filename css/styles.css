@@ -237,7 +237,7 @@ footer {
 
 /* Welcome screen Mi character */
 .mi-welcome {
-  width: 120px;
+  width: 20px;
   height: auto;
   image-rendering: pixelated;
   animation: idle-bounce-mi 1.4s ease-in-out infinite;

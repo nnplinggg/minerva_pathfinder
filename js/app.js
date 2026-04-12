@@ -75,7 +75,18 @@ function showScreen(name) {
 
 function renderWelcome() {
   showScreen('welcome');
-  document.getElementById('btn-start').onclick = () => renderMap();
+
+  const btn    = document.getElementById('btn-start');
+  const btnImg = document.getElementById('play-btn-img');
+
+  // Swap to clicked image on press, back on release
+  btn.addEventListener('mousedown',  () => { btnImg.src = 'assets/play-clicked.png'; });
+  btn.addEventListener('touchstart', () => { btnImg.src = 'assets/play-clicked.png'; }, { passive: true });
+  btn.addEventListener('mouseup',    () => { btnImg.src = 'assets/play-default.png'; });
+  btn.addEventListener('mouseleave', () => { btnImg.src = 'assets/play-default.png'; });
+  btn.addEventListener('touchend',   () => { btnImg.src = 'assets/play-default.png'; });
+
+  btn.onclick = () => renderMap();
 }
 
 // ============================================================
