@@ -171,7 +171,7 @@ footer {
 .pixel-title--sm { font-size: 0.85rem; }
 .pixel-sub {
   font-family: var(--pixel-font);
-  font-size: 0.55rem;
+  font-size: 0.65rem;
   text-align: center;
   color: var(--mu-slate);
   line-height: 1.8;
@@ -180,7 +180,7 @@ footer {
 /* Pixel buttons */
 .btn-pixel {
   font-family: var(--pixel-font);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   background: var(--mu-obsidian);
   color: var(--mu-bone);
   border: none;
@@ -297,7 +297,7 @@ footer {
 }
 .story-text {
   font-family: var(--pixel-font);
-  font-size: 0.55rem;
+  font-size: 0.75rem;
   line-height: 2;
   color: var(--mu-obsidian);
   margin: 0;
@@ -310,7 +310,7 @@ footer {
 }
 .choice-btn {
   font-family: var(--pixel-font);
-  font-size: 0.5rem;
+  font-size: 0.7rem;
   background: var(--mu-bone);
   color: var(--mu-obsidian);
   border: 2px solid var(--mu-obsidian);
@@ -331,7 +331,7 @@ footer {
 }
 .school-card__name {
   font-family: var(--pixel-font);
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   color: var(--mu-clay);
   margin-bottom: 1rem;
 }
@@ -342,7 +342,7 @@ footer {
 }
 .school-card__courses-title {
   font-family: var(--pixel-font);
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   text-transform: uppercase;
   letter-spacing: 0.1em;
   margin-bottom: 0.75rem;
@@ -352,7 +352,7 @@ footer {
 .course-item { border-left: 3px solid var(--mu-goldenrod); padding-left: 0.75rem; }
 .course-item__title {
   font-family: var(--pixel-font);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   color: var(--mu-obsidian);
   margin-bottom: 0.3rem;
 }
@@ -453,7 +453,7 @@ footer {
 
 .map-node__label {
   font-family: 'Silkscreen', monospace;
-  font-size: 5px;
+  font-size: 6px;
   color: #fff;
   background: rgba(30, 20, 10, 0.72);
   padding: 3px 6px;
@@ -528,7 +528,7 @@ footer {
   background: rgba(0, 0, 0, 0.55);
   color: #f5edd8;
   font-family: 'Silkscreen', monospace;
-  font-size: 6px;
+  font-size: 8px;
   padding: 6px 8px;
   border: 2px solid #f0b91e;
   border-radius: 2px;
@@ -603,7 +603,7 @@ footer {
 
 .btn-nav {
   font-family: var(--pixel-font);
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   background: var(--mu-bone);
   color: var(--mu-obsidian);
   border: 2px solid var(--mu-obsidian);
@@ -626,7 +626,7 @@ footer {
 
 .cta-discover {
   font-family: var(--pixel-font);
-  font-size: 0.6rem;
+  font-size: 0.7rem;
   background: var(--mu-goldenrod);
   color: #2a1a0a;
   border: 3px solid var(--mu-clay);
@@ -681,7 +681,7 @@ footer {
   padding: 0.75rem 1rem;
   margin-bottom: 0.75rem;
   font-family: var(--pixel-font);
-  font-size: 0.4rem;
+  font-size: 0.5rem;
   line-height: 2;
   color: var(--mu-charcoal);
   box-shadow: 2px 2px 0 var(--mu-clay);
@@ -696,7 +696,7 @@ footer {
   display: block;
   margin-top: 1rem;
   font-family: var(--pixel-font);
-  font-size: 0.45rem;
+  font-size: 0.55rem;
   color: var(--mu-clay);
   text-decoration: none;
   border-top: 1px solid var(--mu-ash);
