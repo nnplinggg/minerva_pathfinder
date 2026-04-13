@@ -246,6 +246,14 @@ footer {
 }
 .mi-diagnosis[hidden] { display: none; }
 
+/* School card mascot image */
+.mascot-card-img {
+  width: min(120px, 30vw);
+  height: auto;
+  image-rendering: pixelated;
+  margin: 1rem 0;
+}
+
 /* Hide CSS mascot on screens where it covers content */
 .adventure-inner .mascot,
 #screen-school-card .mascot {
@@ -404,7 +412,7 @@ footer {
   width: min(820px, 95vw);
   aspect-ratio: 820 / 560;
   margin: 0 auto;
-  background-image: url('../assets/map.png');
+  background-image: url('../assets/new_map.png');
   background-size: cover;
   background-position: center;
   background-color: #7ec850;
@@ -542,8 +550,8 @@ footer {
 
 .map-mi {
   position: absolute;
-  width: 40px;
-  height: 40px;
+  width: 52px;
+  height: 52px;
   background-image: url('../assets/mi_character(final).png');
   background-size: contain;
   background-repeat: no-repeat;
