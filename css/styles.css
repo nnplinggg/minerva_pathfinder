@@ -550,8 +550,8 @@ footer {
 
 .map-mi {
   position: absolute;
-  width: 64px;
-  height: 64px;
+  width: 60px;
+  height: 60px;
   background-image: url('../assets/mi_character(final).png');
   background-size: contain;
   background-repeat: no-repeat;
