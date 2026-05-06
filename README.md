@@ -8,9 +8,9 @@
 
 ## The Problem
 
-Admitted and freshman Minerva students face a wall of dense, text-heavy information when trying to understand how the curriculum connects to their interests. The course catalog is a PDF. The school descriptions are administrative. There's no interactive way to say: *"I care about systems and data — what would my actual Minerva coursework look like?"*
+Admitted and freshman Minerva students face a wall of dense, text-heavy information when trying to understand how the curriculum connects to their interests. The course catalog is a PDF. The school descriptions are administrative. So...there's no interactive way to say: *"I care about systems and data — what would my actual Minerva coursework look like?"*
 
-This creates anxiety, not excitement. Students struggle to find their intellectual "fit" before committing — or in their first year when choosing concentrations.
+This creates a lot of anxiety for students, including myself. We often struggle to find our intellectual "fit" before committing — or in our first year when choosing concentrations.
 
 **Minerva Pathfinder aims to facilitate personalized exploration.**
 
